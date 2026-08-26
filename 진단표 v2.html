@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포트폴리오 수정 방향 v2 — 실제 자료 확인</title>
+<link rel="stylesheet" href="assets/styles/base.css">
+<link rel="stylesheet" href="assets/styles/warm-sand.css">
+<style>
+  body { background: var(--w-bg); color: var(--w-text); font-family: var(--w-font-kr); padding: 60px 0 120px; }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  h1 { font-family: var(--w-font-kr); font-size: 2.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  h1 em { font-family: var(--w-font-serif); font-style: italic; color: var(--w-bronze-deep); font-weight: 500; }
+  .lead { color: var(--w-text-2); font-size: 1.05rem; line-height: 1.7; max-width: 800px; margin-bottom: 40px; }
+  .eyebrow { font-family: var(--w-font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--w-text-3); margin-bottom: 12px; }
+  h2.section {
+    font-size: 1.5rem; font-weight: 700; margin: 60px 0 10px;
+    letter-spacing: -0.015em; padding-left: 14px; border-left: 4px solid var(--w-bronze);
+  }
+  h2.section .sub { display: block; font-size: 0.85rem; color: var(--w-text-3); font-family: var(--w-font-mono); font-weight: 400; margin-top: 4px; letter-spacing: 0.04em; }
+
+  /* 발견 요약 */
+  .findings {
+    background: color-mix(in oklab, var(--w-bronze-soft) 60%, var(--w-panel));
+    border: 1px solid var(--w-bronze);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 32px;
+    box-shadow: var(--w-sh-md);
+  }
+  .findings h3 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .findings p { color: var(--w-text-2); line-height: 1.7; margin: 8px 0 0; }
+  .findings ul { margin: 12px 0 0; padding-left: 20px; }
+  .findings li { line-height: 1.75; color: var(--w-text); margin-bottom: 6px; }
+  .findings b { color: var(--w-bronze-deep); }
+
+  /* 프로젝트 카드 */
+  .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 20px; }
+  @media (max-width: 900px) { .projects { grid-template-columns: 1fr; } }
+
+  .proj {
+    background: var(--w-panel);
+    border: 1px solid var(--w-border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--w-sh-sm);
+    display: flex; flex-direction: column;
+  }
+  .proj-img { background: var(--w-panel-2); aspect-ratio: 16/9; overflow: hidden; position: relative; }
+  .proj-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .proj-img.multi { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .proj-img.multi img { aspect-ratio: 16/9; }
+  .proj-tag {
+    position: absolute; top: 12px; left: 12px;
+    padding: 4px 10px; background: rgba(28, 24, 20, 0.86); color: var(--w-bg);
+    font-family: var(--w-font-mono); font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    border-radius: 4px; z-index: 2;
+  }
+  .proj-body { padding: 22px 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .proj-title { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.01em; line-height: 1.35; }
+  .proj-title em { font-family: var(--w-font-serif); font-style: italic; color: var(--w-bronze-deep); font-weight: 500; }
+  .proj-meta { font-family: var(--w-font-mono); font-size: 0.75rem; color: var(--w-text-3); letter-spacing: 0.06em; }
+  .proj-body p { color: var(--w-text-2); font-size: 0.94rem; line-height: 1.65; margin: 0; }
+  .proj-body p b { color: var(--w-text); }
+  .proj-verdict {
+    margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--w-border-strong);
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  .tag {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-family: var(--w-font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em;
+  }
+  .tag-new { background: #e0ecdf; color: #2f6b3a; }
+  .tag-strong { background: #f6e8cc; color: #8a5a1a; }
+  .tag-keep { background: #e5ecf5; color: #2d5090; }
+  .tag-note { background: #eee; color: #666; }
+
+  /* 결정 요약 표 */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 32px; background: var(--w-panel); border-radius: 12px; overflow: hidden; box-shadow: var(--w-sh-sm); }
+  th, td { padding: 14px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--w-border); font-size: 0.94rem; line-height: 1.65; }
+  th { background: var(--w-panel-2); font-family: var(--w-font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--w-text-3); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  td.k { width: 210px; font-weight: 600; }
+
+  .del { color: #a13030; text-decoration: line-through; }
+  .ins { color: #2f6b3a; background: #e0ecdf; padding: 0 4px; border-radius: 3px; }
+  .em { color: var(--w-bronze-deep); font-weight: 600; }
+
+  .action-box {
+    margin-top: 60px;
+    background: var(--w-text);
+    color: var(--w-bg);
+    border-radius: 14px;
+    padding: 40px 44px;
+  }
+  .action-box .eyebrow { color: color-mix(in oklab, var(--w-bg) 60%, transparent); }
+  .action-box h2 { font-size: 1.5rem; font-weight: 700; margin: 8px 0 20px; letter-spacing: -0.015em; color: var(--w-bg); }
+  .action-box ol { margin: 0; padding-left: 22px; }
+  .action-box li { margin-bottom: 14px; line-height: 1.75; color: color-mix(in oklab, var(--w-bg) 90%, transparent); }
+  .action-box li b { color: var(--w-bg); }
+  .action-box code {
+    font-family: var(--w-font-mono);
+    background: color-mix(in oklab, var(--w-bg) 15%, transparent);
+    color: var(--w-bg); padding: 2px 8px; border-radius: 4px; font-size: 0.86rem;
+  }
+</style>
+</head>
+<body class="warm">
+
+<div class="wrap">
+  <div class="eyebrow">/// diagnostic v2 · 2026.08.25 · portfolio.zip 분석 완료</div>
+  <h1>업로드한 자료를 열어봤어요 —<br>포트폴리오가 <em>훨씬 더 강해질 수 있습니다.</em></h1>
+  <p class="lead">
+    <b>포트폴리오.zip</b>(436MB) 안에 있던 실제 결과물 자료를 다 열어봤습니다. 결론부터 말씀드리면 —
+    <b>지금 포트폴리오에 담긴 것보다 훨씬 강력한 근거 자료</b>가 이미 있으세요.
+    특히 <b>정부지원 창업공모전 2건</b>(청바지 · AI EduMentor), <b>청소년 마인드맵 축제 현장 사진</b>,
+    <b>키플레이스 실물 홍보물</b>, <b>캐나다 프라이드 축제 자원봉사</b> — 이건 반드시 넣어야 합니다.
+    아래는 실물 근거 자료로 새로 만들 수 있는 프로젝트 카드들, 그리고 사실관계 정리입니다.
+  </p>
+
+  <!-- ─────── 핵심 발견 ─────── -->
+  <div class="findings">
+    <h3>🔍 자료를 열어보고 발견한 것</h3>
+    <ul>
+      <li><b>정부지원 창업공모전 참여 프로젝트 2건이 있다는 걸 지금 포트폴리오는 전혀 담고 있지 않습니다.</b>
+        <ul style="margin: 6px 0 8px 0;">
+          <li>① <b>청바지 (NowYouth)</b> — 시니어 복지·활동·관계 통합 라이프스타일 플랫폼 (모두의 창업 프로젝트 제출)</li>
+          <li>② <b>AI EduMentor</b> — 지능형 학습 멘토 에이전트 (과학기술정보통신부 × 모두의아이디어 공모전 제출)</li>
+        </ul>
+        각각 제안서·기획서·MVP 계획서·투자 기획서·소개 영상까지 실물 자료가 있어요.
+      </li>
+      <li><b>키플레이스는 "아동·키즈 놀이공간" 매장</b>이었네요 (플레이맘, 오픈바이저, 아이 피부 트러블 CS 매뉴얼 등이 근거). 지금 포트폴리오는 "매장"이라고만 두루뭉술하게 표현되어 있어 채용담당자가 무슨 매장인지 알기 어려워요.</li>
+      <li><b>청소년 마인드맵 경진대회</b>는 사진 다수 존재. "총괄 운영"이라는 표현이 실제 근거로 확인됩니다.</li>
+      <li><b>캐나다 어학연수 = 프라이드 축제 자원봉사자로 참여</b>했다는 실물 근거가 있어요. 어학원도 토론토(sscl) + 빅토리아(sslc) 두 곳입니다. 단순 "문화 체험"보다 훨씬 능동적입니다.</li>
+      <li><b>ThinkWise SaaS 교육</b>은 실제 강의 후기 이름·날짜·수강자 코멘트가 다수 존재. 후기 인용을 넣으면 강력한 근거가 됩니다.</li>
+      <li><b>선인자동차 리셉션 인수인계 엑셀 파일(1.3MB)</b> 이 있어요 — 이건 "CS 매뉴얼 제작"의 실물 증거.</li>
+    </ul>
+  </div>
+
+  <!-- ─────── 새로 만들 수 있는 프로젝트 카드 ─────── -->
+  <h2 class="section">1 · 실물 자료로 새로 넣을 수 있는 프로젝트 <span class="sub">/// evidence-backed projects</span></h2>
+
+  <div class="projects">
+
+    <div class="proj">
+      <div class="proj-img">
+        <span class="proj-tag">NEW</span>
+        <img src="assets/evidence/ai-edumentor-1.png" alt="AI EduMentor 제안서">
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">① AI EduMentor <em>— 정부 공모전 참여작</em></div>
+        <div class="proj-meta">2026 · 과학기술정보통신부 × 모두의아이디어 공모전</div>
+        <p>K-Digital Training(KDT) 중도이탈률(연 8~20%) 문제를 해결하는 <b>AI 학습 멘토 플랫폼 기획·제안서 제출</b>. 정책·데이터 근거 조사부터 MVP 설계, 이탈 위험 스코어링, 코치 에스컬레이션 흐름까지 정리한 문서. <b>백오피스 담당자의 정책·데이터 이해력을 보여주는 최고의 근거</b>.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-new">신규 추가</span>
+          <span class="tag tag-strong">Featured 승격</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-img">
+        <span class="proj-tag">NEW</span>
+        <img src="assets/evidence/ai-edumentor-2.png" alt="청바지 NowYouth 플랫폼">
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">② 청바지 (NowYouth) <em>— 시니어 복지 플랫폼</em></div>
+        <div class="proj-meta">2026 · 「모두의 창업 프로젝트」 공모전 제출</div>
+        <p>65세 이상 시니어의 복지·활동·관계 통합 플랫폼 기획. 통계청·OECD·복지부 <b>공공데이터 기반 문제 정의</b>부터 MVP 개발계획서·AC투자 기획서·서비스 구현 실행계획서·소개 영상까지 <b>기획 문서 4종 + 홍보 영상 5편</b> 실물 존재. 정부 지원사업 실무 경험(원라인 시절)이 확장된 결과물.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-new">신규 추가</span>
+          <span class="tag tag-strong">Featured 승격</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-img multi">
+        <img src="assets/evidence/mindmap-festival-1.jpg" alt="청소년 마인드맵 축제 1">
+        <img src="assets/evidence/mindmap-festival-2.jpg" alt="청소년 마인드맵 축제 2">
+        <span class="proj-tag">EVIDENCE ✓</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">③ 청소년 디지털 마인드맵 <em>축제 총괄 운영</em></div>
+        <div class="proj-meta">2025~2026 · 심테크시스템 대외 프로젝트</div>
+        <p>실물 사진 6장 확인. "총괄 운영"이라는 표현이 <b>실제 근거로 뒷받침됨</b>. 다만 이력서에도 <b>"2개 지역"이라는 수치는 없어요</b> — 실제 몇 회차인지 확인해서 정확한 수치로 교체 필요.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-keep">유지</span>
+          <span class="tag tag-note">수치 검증</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-img">
+        <span class="proj-tag">EVIDENCE ✓</span>
+        <img src="assets/evidence/thinkwise-web.png" alt="ThinkWise 웹버전 입문과정">
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">④ ThinkWise SaaS <em>사용자 교육 운영</em></div>
+        <div class="proj-meta">2024.09 — 2026.04 · 퇴사</div>
+        <p>실제 강의 후기(4/29 · 5/19 · 6/24 · 7/15 · 7/31 · 9/11 · 9/23 · 1/15 · 1/22 · 2/5 · 3/26 등 <b>11회 이상의 정기 교육 차수 실물 근거</b>), 커리큘럼 문서, AI 자기소개서 과정 개발안, 배포 자료까지 다 확인. 지금 포트폴리오의 "13+ 차수"는 <b>대략 맞는 수치</b>지만, 확인 후 정확히 잡을 필요.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-keep">유지</span>
+          <span class="tag tag-note">후기 인용 추천</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-img multi">
+        <img src="assets/evidence/kiplace-1.png" alt="키플레이스 홍보">
+        <img src="assets/evidence/kiplace-2.png" alt="키플레이스 오픈지점">
+        <span class="proj-tag">EVIDENCE ✓</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">⑤ 키플레이스 <em>— 아동 놀이공간 55개 매장</em></div>
+        <div class="proj-meta">2021.05 — 2023.06</div>
+        <p>실물 홍보 사진·오픈지점 바이저 업무 사진 존재. cs.txt에서 <b>"아이들 피부트러블·다쳤을 경우"</b> 항목 확인 → <b>아동·키즈 놀이공간 프랜차이즈</b>임이 명확. 지금 포트폴리오는 "매장"이라고만 하고 있어 <b>업종 특성이 드러나지 않아요</b>. "아동 놀이공간 55개 매장" 정도로 구체화 권장.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-strong">업종 명시</span>
+          <span class="tag tag-keep">근거 강함</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-img">
+        <span class="proj-tag">EVIDENCE ✓</span>
+        <img src="assets/evidence/ai-cardnews.png" alt="AI 실무교육 결과물">
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">⑥ 보험 실무자 대상 <em>AI 활용 교육</em></div>
+        <div class="proj-meta">2026.05 · 심테크시스템</div>
+        <p>실제 강의 교안(md 파일), 학생 후기 13명 이상 코멘트, 실제 실습 결과물(카드뉴스·PPT·프로필 이미지·프롬프트 예시집) 실물 존재. <b>"AI 활용" 강점의 가장 강력한 실물 근거</b>. 할루시네이션 방지 프롬프트, 이미지 가공용 프롬프트 등 커리큘럼 문서까지 완비.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-new">신규 별도 카드</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-img multi">
+        <img src="assets/evidence/canada-1.jpg" alt="캐나다 어학연수 1">
+        <img src="assets/evidence/canada-2.jpg" alt="캐나다 어학연수 2">
+        <span class="proj-tag">EVIDENCE ✓</span>
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">⑦ 캐나다 <em>— 어학연수 + 프라이드 축제 자원봉사</em></div>
+        <div class="proj-meta">2019.02 — 2019.07 · 6개월</div>
+        <p><b>SSCL 토론토 + SSLC 빅토리아 두 도시 어학원 수료</b>, <b>토론토 프라이드 축제 자원봉사자 참여</b> 실물 근거. 지금 포트폴리오의 "문화 배우고 성장" 서술보다 <b>훨씬 능동적인 스토리</b>로 다시 쓸 수 있음.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-strong">서술 강화</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-img">
+        <span class="proj-tag">EVIDENCE ✓</span>
+        <img src="assets/evidence/ai-review.webp" alt="AI 교육 후기">
+      </div>
+      <div class="proj-body">
+        <div class="proj-title">⑧ 강사 후기 <em>— 인용 소재</em></div>
+        <div class="proj-meta">2026.05 AI 실무교육 수강생 후기</div>
+        <p><b>"AI 이용법을 아예 몰랐는데 알게 되어서 좋았습니다"</b>, <b>"실무와 접목해서 정확하게 배울 수 있는 시간"</b>, <b>"토니스타크가 된 기분입니다"</b> 등 실제 수강생 코멘트 다수. 자기소개서·포트폴리오 곳곳에 실물 인용으로 활용 가능.</p>
+        <div class="proj-verdict">
+          <span class="tag tag-new">인용 삽입</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ─────── 사실관계 확정 ─────── -->
+  <h2 class="section">2 · 사실관계 확정 <span class="sub">/// verified against original resume</span></h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width: 240px;">항목</th>
+        <th>확정 사항</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="k">심테크시스템</td>
+        <td><span class="del">"2024.09 — 현재 · 재직 중"</span> → <span class="ins">"2024.09 — 2026.04 · 1년 8개월 · 퇴사"</span> <b>✓ 확정</b></td>
+      </tr>
+      <tr>
+        <td class="k">Hero "2026 새로운 기회를 찾고 있습니다"</td>
+        <td>유지 OK (퇴사자 상태와 일치). "현재 재직 중" 표기만 삭제.</td>
+      </tr>
+      <tr>
+        <td class="k">키플레이스 매뉴얼 "15종+"</td>
+        <td>실물 파일 확인: 네이버 스마트 플레이스, 오픈바이저 업무, 점주 교육, CS, 예약창, 필수비품, 통신판매업 등 <b>실제 문서 20종+ 존재</b>. <span class="em">"15종+" 수치는 오히려 보수적인 표현 — 유지해도 무방</span>. 다만 "다수의 점주용 운영 매뉴얼"로 순화하는 것도 안전.</td>
+      </tr>
+      <tr>
+        <td class="k">청소년 마인드맵 "2개 지역"</td>
+        <td>원본 이력서에 지역 수치 없음. 사진만 있고 실제 몇 회차인지 미확인. <span class="em">사용자님께 정확한 수치 확인 필요</span> — 확인 안 되면 "지역 청소년 대상 마인드맵 축제 총괄"로 단순화.</td>
+      </tr>
+      <tr>
+        <td class="k">정기 교육 "13+ 차수"</td>
+        <td>강사 후기 md 파일에 <b>실제 11회 차수 확인됨</b>(2024.4~2026.3). "13+"는 약간 과장 가능성 → <span class="em">"10회 이상 정기 교육 운영"</span>이 안전.</td>
+      </tr>
+      <tr>
+        <td class="k">"포드 서비스 엑설런스 전국 상위 5인 본선 진출"</td>
+        <td>원본 이력서에는 <b>"수상 경험"까지만</b>. 자료 zip에도 관련 자료 없음. <span class="em">사용자님께 실제 여부 확인 필요</span>. 확인 안 되면 "포드/링컨 서비스 엑설런스 프로그램 수상"으로 단순화 권장.</td>
+      </tr>
+      <tr>
+        <td class="k">이력서에 없는 새 항목들</td>
+        <td>
+          <b>➕ 정부 공모전 참여 2건</b> (청바지 · AI EduMentor) — 강력한 신규 카드<br>
+          <b>➕ 캐나다 프라이드 축제 자원봉사</b> — abroad 섹션 재작성<br>
+          <b>➕ AI 실무교육 커리큘럼 실물</b> — 별도 서브카드
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ─────── 최종 실행 ─────── -->
+  <div class="action-box">
+    <div class="eyebrow">/// next.step · v2 최종안</div>
+    <h2>지금 5개만 확인해 주시면 오늘 안에 초안 완성해드리겠습니다</h2>
+    <ol>
+      <li>
+        <b>① 청바지 · AI EduMentor 프로젝트를 Featured에 넣어도 될까요?</b><br>
+        (이건 개인 참여 프로젝트로 보이는데, <b>회사 소속 프로젝트인지 / 개인·팀 창업 아이디어 제출인지</b> 알려주세요. 표기 방식이 달라져요.)
+      </li>
+      <li>
+        <b>② 청소년 마인드맵 축제는 몇 개 지역·몇 회차였나요?</b>
+        <br>(모르시면 "지역 청소년 대상 · 사진 근거 있음" 정도로 단순화합니다.)
+      </li>
+      <li>
+        <b>③ 포드 서비스 엑설런스 "전국 상위 5인 본선 진출"</b>이 실제 사실 맞나요?
+        <br>(사실이면 유지, 아니면 "수상 경험" 정도로 단순화)
+      </li>
+      <li>
+        <b>④ 키플레이스가 "아동 놀이공간 프랜차이즈"라고 표기해도 될까요?</b>
+        <br>(cs.txt에 "아이들 피부트러블·다쳤을 경우" 항목이 있어 아동 대상 매장으로 보이는데 맞나요?)
+      </li>
+      <li>
+        <b>⑤ 진행 방식</b><br>
+        · Warm Sand 톤 그대로 유지<br>
+        · Philosophy · Other Selected Work · Aspiration 3개 섹션 <b>정리·통합</b><br>
+        · <code>data/portfolio.js</code> 전면 재작성 + <code>resume.html</code>은 <b>원본 자소서 4항목</b>을 살리되 문장만 자신감 있는 톤으로 다듬기<br>
+        · Featured에 <b>청바지 + AI EduMentor + 원라인(1인 백오피스)</b> 3개 우선 배치, 키플레이스·심테크는 Timeline·서브 카드로<br>
+        <br>이대로 진행할까요?
+      </li>
+    </ol>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+/* ────────────────────────────────────────────────────
+   Typography Refinement — 자간 · 행간 · 줄바꿈 공통 튜닝
+   한글 본문 가독성을 위한 미세 조정 레이어
+   base.css → tone-c.css → tone-c-refinement.css → 이 파일
+   순서로 로드하면 앞선 값을 안전하게 덮어씁니다.
+   ──────────────────────────────────────────────────── */
+
+/* ── 전역 : 한글 자간 기본치 (Pretendard 최적) */
+body.tone-c {
+  letter-spacing: -0.01em;      /* 살짝 촘촘히 : 한글 조합자 형태 유지 */
+  word-break: keep-all;         /* 어절 단위 줄바꿈 (한글 필수) */
+  overflow-wrap: break-word;    /* 극단적으로 긴 영단어만 강제 줄바꿈 */
+}
+
+/* ── 큰 타이틀 : 촘촘하게 (한글은 큰 글자일수록 자간 줄이는 게 정석) */
+.tone-c .display-1,
+.tone-c .display-1 .kr {
+  letter-spacing: -0.032em;
+  line-height: 1.14;
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+.tone-c .display-2,
+.tone-c .display-2 .kr {
+  letter-spacing: -0.026em;
+  line-height: 1.22;
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+.tone-c .heading {
+  letter-spacing: -0.018em;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+/* ── 본문 : 넉넉하게 (한글 본문은 행간이 가독성의 대부분) */
+.tone-c .body,
+.tone-c .hero-lead,
+.tone-c .hero-statement-line,
+.tone-c .hero-sub-detail {
+  letter-spacing: -0.013em;
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+.tone-c .body {
+  line-height: 1.85;
+}
+.tone-c .hero-lead {
+  line-height: 1.75;
+}
+
+/* ── About 본문 : 자기소개서 문단과 리듬 통일 */
+#about-body p,
+#aspiration-body p {
+  letter-spacing: -0.012em;
+  line-height: 1.9;
+  word-break: keep-all;
+  text-wrap: pretty;
+  margin: 0 0 1.2em;
+}
+#about-body p:last-child,
+#aspiration-body p:last-child { margin-bottom: 0; }
+
+/* ── Skills : capability / action / tools */
+.tone-c .skill-cap-title {
+  letter-spacing: -0.02em;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+.tone-c .skill-cap-action {
+  letter-spacing: -0.012em;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+.tone-c .skill-tools li {
+  letter-spacing: -0.008em;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+/* ── Timeline : 회사·역할·설명 */
+.tone-c .tl-company {
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+.tone-c .tl-role,
+.tone-c .tl-highlight {
+  letter-spacing: -0.014em;
+  line-height: 1.55;
+  word-break: keep-all;
+}
+.tone-c .tl-desc {
+  letter-spacing: -0.012em;
+  line-height: 1.85;
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+.tone-c .tl-tag { letter-spacing: -0.005em; }
+
+/* ── Projects 카드 : 제목·태그라인 */
+.tone-c .featured-title,
+.tone-c .other-title {
+  letter-spacing: -0.022em;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+.tone-c .featured-tagline,
+.tone-c .other-tagline {
+  letter-spacing: -0.012em;
+  line-height: 1.7;
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+.tone-c .meta-val {
+  letter-spacing: -0.01em;
+  word-break: keep-all;
+}
+
+/* ── Contact / Aspiration : 큰 문장 */
+.tone-c .contact-title,
+.tone-c .aspiration-card h2 {
+  letter-spacing: -0.024em;
+  line-height: 1.35;
+  word-break: keep-all;
+  text-wrap: pretty;
+}
+.tone-c .contact-desc {
+  letter-spacing: -0.012em;
+  line-height: 1.8;
+  word-break: keep-all;
+}
+
+/* ── Nav / Eyebrow : 모노폰트는 자간 살짝 벌려두기 */
+.tone-c .nav-links a,
+.tone-c .eyebrow,
+.tone-c .mono {
+  letter-spacing: 0.02em;
+}
+
+/* ── 버튼 라벨 */
+.tone-c .btn-call-lbl,
+.tone-c .btn-call-num {
+  letter-spacing: -0.005em;
+}
+
+/* ── 프린트(이력서 PDF 저장) 대비 */
+@media print {
+  body.tone-c { letter-spacing: -0.005em; }
+  .tone-c .body,
+  .cl-prose { line-height: 1.75; }
+}

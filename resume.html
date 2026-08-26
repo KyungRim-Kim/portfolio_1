@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김경림 · 자기소개서 — 4가지 이야기</title>
+  <meta name="description" content="다양한 경험을 경쟁력으로 만들어온 김경림의 자기소개서. 가치관 · 성격의 장단점 · 지원동기와 경력 · 입사 후 포부.">
+  <meta name="theme-color" content="#6BA83B">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="김경림 자기소개서 — 4가지 이야기">
+  <meta property="og:description" content="다양한 경험을 경쟁력으로 만들어온 김경림의 자기소개서.">
+  <meta property="og:image" content="assets/profile/profile.jpg?v=2">
+
+  <!-- ▼ 포트폴리오 홈과 동일한 CSS 시스템 -->
+  <link rel="stylesheet" href="assets/styles/base.css">
+  <link rel="stylesheet" href="assets/styles/tone-c.css">
+  <link rel="stylesheet" href="assets/styles/tone-c-refinement.css">
+  <link rel="stylesheet" href="assets/styles/warm-brown.css">
+  <link rel="stylesheet" href="assets/styles/typography-refinement.css">
+
+  <style>
+    /* ────────────────────────────────────────────────────
+       Cover Letter — 포트폴리오 홈과 동일 톤 기반
+       (base.css + tone-c.css 위에 얹는 페이지 전용 레이아웃)
+       ──────────────────────────────────────────────────── */
+
+    /* ── HERO : 홈 hero 리듬과 맞추되 자기소개서 성격에 맞게 소폭 조정 */
+    .cl-hero {
+      padding: 120px 0 84px;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .cl-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--c-font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      color: var(--c-text-3);
+      margin-bottom: 40px;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .cl-back:hover { color: var(--c-apple-deep); }
+    .cl-back .arr { transition: transform .2s; }
+    .cl-back:hover .arr { transform: translateX(-3px); }
+
+    .cl-hero h1 {
+      font-family: var(--c-font-kr);
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5.2vw, 4.4rem);
+      line-height: 1.18;         /* 홈 display-1 대비 한글 가독성 우선 */
+      letter-spacing: -0.028em;  /* 자간 미세 조정 : 촘촘하되 답답하지 않게 */
+      color: var(--c-text);
+      margin: 28px 0 24px;
+      text-wrap: pretty;
+      word-break: keep-all;
+    }
+    .cl-hero h1 em {
+      font-style: normal;
+      color: var(--c-apple-deep);
+      font-weight: 700;
+    }
+    .cl-hero-lead {
+      font-family: var(--c-font-kr);
+      font-size: clamp(1.02rem, 1.55vw, 1.2rem);
+      line-height: 1.85;         /* 문장이 두 줄 이상 → 행간 넉넉히 */
+      letter-spacing: -0.012em;
+      color: var(--c-text-2);
+      max-width: 720px;
+      text-wrap: pretty;
+      word-break: keep-all;
+    }
+    .cl-hero-meta {
+      display: flex; flex-wrap: wrap; gap: 20px 40px;
+      margin-top: 44px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--c-border-strong);
+      font-family: var(--c-font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.01em;
+      color: var(--c-text-2);
+    }
+    .cl-hero-meta .k {
+      color: var(--c-text-3);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-right: 10px;
+      font-size: 0.72rem;
+    }
+    .cl-hero-meta a {
+      color: var(--c-text);
+      text-decoration: none;
+      border-bottom: 1px solid var(--c-border-strong);
+      padding-bottom: 1px;
+      transition: all .2s;
+    }
+    .cl-hero-meta a:hover {
+      color: var(--c-apple-deep);
+      border-color: var(--c-apple);
+    }
+
+    /* ── 목차 : 홈의 카드 리듬과 톤 맞춤 */
+    .cl-toc {
+      background: var(--c-panel-2);
+      border-top: 1px solid var(--c-border);
+      border-bottom: 1px solid var(--c-border);
+      padding: 40px 0;
+    }
+    .cl-toc-label {
+      font-family: var(--c-font-mono);
+      font-size: 0.72rem;
+      color: var(--c-text-3);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .cl-toc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .cl-toc-item {
+      display: block;
+      padding: 20px 22px;
+      background: var(--c-panel);
+      border: 1px solid var(--c-border);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all .2s ease;
+    }
+    .cl-toc-item:hover {
+      border-color: var(--c-apple);
+      transform: translateY(-2px);
+      box-shadow: var(--c-shadow-md);
+    }
+    .cl-toc-num {
+      font-family: var(--c-font-mono);
+      font-size: 0.7rem;
+      color: var(--c-apple-deep);
+      letter-spacing: 0.16em;
+      margin-bottom: 8px;
+    }
+    .cl-toc-title {
+      font-family: var(--c-font-kr);
+      font-weight: 600;
+      font-size: 1rem;
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      color: var(--c-text);
+    }
+
+    /* ── 챕터 공통 : 홈 section 리듬과 정렬 */
+    .cl-chapter {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--c-border);
+    }
+    .cl-chapter:nth-of-type(even) { background: var(--c-panel-2); }
+    .cl-chapter-grid {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 60px;
+    }
+    .cl-chapter-side {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+    }
+    .cl-chapter-num {
+      font-family: var(--c-font-sans);
+      font-size: 5.4rem;
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: var(--c-apple);
+    }
+    .cl-chapter-num .of {
+      display: inline-block;
+      margin-left: 6px;
+      font-size: 1rem;
+      color: var(--c-text-3);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      vertical-align: super;
+    }
+    .cl-chapter-kind {
+      margin-top: 14px;
+      font-family: var(--c-font-mono);
+      font-size: 0.72rem;
+      color: var(--c-text-3);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .cl-chapter-topic {
+      margin-top: 8px;
+      font-family: var(--c-font-kr);
+      font-weight: 600;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      letter-spacing: -0.015em;
+      color: var(--c-text);
+      word-break: keep-all;
+    }
+
+    .cl-chapter-main { min-width: 0; }
+    .cl-headline {
+      font-family: var(--c-font-kr);
+      font-weight: 700;
+      font-size: clamp(1.7rem, 3vw, 2.35rem);
+      line-height: 1.35;           /* 헤드라인 행간 : 답답하지 않도록 */
+      letter-spacing: -0.022em;    /* 자간 : 큰 글자는 조금 더 촘촘하게 */
+      color: var(--c-text);
+      margin-bottom: 20px;
+      padding-left: 24px;
+      position: relative;
+      text-wrap: pretty;
+      word-break: keep-all;
+    }
+    .cl-headline::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 12px;
+      height: 3px;
+      background: var(--c-apple);
+    }
+    .cl-headline em {
+      font-style: normal;
+      color: var(--c-apple-deep);
+      font-weight: 700;
+    }
+
+    .cl-original-note {
+      margin: 0 0 28px;
+      font-family: var(--c-font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--c-text-3);
+    }
+    .cl-original-note .badge {
+      display: inline-block;
+      background: var(--c-apple-soft);
+      color: var(--c-apple-deep);
+      padding: 3px 9px;
+      border-radius: 4px;
+      margin-right: 8px;
+      letter-spacing: 0.08em;
+      font-weight: 600;
+    }
+
+    .cl-prose {
+      font-family: var(--c-font-kr);
+      font-size: 1.06rem;
+      line-height: 1.95;           /* ★ 행간 : 긴 문단 가독성 최우선 */
+      letter-spacing: -0.012em;    /* ★ 자간 : 한글 본문 최적치 */
+      color: var(--c-text);
+      text-wrap: pretty;
+      word-break: keep-all;
+    }
+    .cl-prose p { margin: 0 0 1.25em; }
+    .cl-prose p:last-child { margin-bottom: 0; }
+
+    .cl-mark {
+      background: linear-gradient(180deg, transparent 62%, var(--c-apple-soft) 62%);
+      padding: 0 2px;
+      font-weight: 500;
+    }
+    .cl-em {
+      color: var(--c-apple-deep);
+      font-weight: 600;
+    }
+
+    .cl-summary {
+      margin-top: 40px;
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 12px 20px;
+      background: var(--c-panel);
+      border: 1px solid var(--c-apple-soft-2);
+      border-radius: 999px;
+      font-family: var(--c-font-mono);
+      font-size: 0.84rem;
+      letter-spacing: 0.005em;
+      color: var(--c-text);
+      box-shadow: 0 4px 16px -6px var(--c-apple-glow);
+    }
+    .cl-summary .lbl {
+      color: var(--c-text-3);
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .cl-summary .arr { color: var(--c-apple-deep); }
+
+    /* ── Closing : 홈 contact 섹션과 비주얼 연결 */
+    .cl-closing {
+      padding: 120px 0 100px;
+      background:
+        radial-gradient(ellipse at 80% 100%, var(--c-apple-wash), transparent 55%),
+        var(--c-bg);
+      border-bottom: 1px solid var(--c-border);
+      text-align: center;
+    }
+    .cl-closing-tag {
+      font-family: var(--c-font-mono);
+      font-size: 0.75rem;
+      color: var(--c-apple-deep);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .cl-closing h2 {
+      font-family: var(--c-font-kr);
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      margin-bottom: 20px;
+      text-wrap: pretty;
+      word-break: keep-all;
+    }
+    .cl-closing p {
+      font-family: var(--c-font-kr);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      letter-spacing: -0.012em;
+      color: var(--c-text-2);
+      max-width: 640px;
+      margin: 0 auto;
+      word-break: keep-all;
+    }
+    .cl-closing-cta {
+      display: inline-flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 44px;
+    }
+    .cl-sign {
+      max-width: 900px;
+      margin: 60px auto 0;
+      padding: 40px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 20px;
+      border-top: 1px dashed var(--c-border-strong);
+      text-align: left;
+    }
+    .cl-sign-l {
+      font-family: var(--c-font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      color: var(--c-text-3);
+      line-height: 1.7;
+    }
+    .cl-sign-l .en {
+      color: var(--c-text);
+      font-family: var(--c-font-mono);
+      font-size: 0.88rem;
+    }
+    .cl-sign-name {
+      font-family: var(--c-font-kr);
+      font-weight: 700;
+      font-size: 1.7rem;
+      letter-spacing: -0.02em;
+      color: var(--c-text);
+      text-align: right;
+    }
+    .cl-sign-name .en {
+      display: block;
+      font-family: var(--c-font-sans);
+      font-size: 0.76rem;
+      font-weight: 500;
+      color: var(--c-text-3);
+      letter-spacing: 0.16em;
+      margin-top: 4px;
+    }
+
+    /* ── responsive */
+    @media (max-width: 900px) {
+      .cl-hero { padding: 90px 0 60px; }
+      .cl-chapter { padding: 70px 0; }
+      .cl-chapter-grid { grid-template-columns: 1fr; gap: 32px; }
+      .cl-chapter-side { position: static; }
+      .cl-chapter-num { font-size: 4rem; }
+      .cl-toc-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .cl-toc-grid { grid-template-columns: 1fr; }
+      .cl-hero-meta { gap: 14px 24px; }
+      .cl-sign { flex-direction: column; align-items: flex-start; }
+      .cl-sign-name { text-align: left; }
+    }
+  </style>
+</head>
+<body class="tone-c" data-screen-label="Cover Letter">
+
+  <!-- ────── NAV (포트폴리오 홈과 동일) ────── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-brand">kim.kyungrim</a>
+      <div class="nav-links">
+        <a href="index.html#philosophy">philosophy</a>
+        <a href="index.html#about">about</a>
+        <a href="index.html#skills">skills</a>
+        <a href="index.html#career">career</a>
+        <a href="index.html#projects">projects</a>
+        <a href="resume.html" class="active">resume</a>
+      </div>
+      <a href="tel:01098919709" class="nav-cta">contact →</a>
+    </div>
+  </nav>
+
+  <!-- ────── HERO ────── -->
+  <section class="cl-hero" data-screen-label="CL - Hero">
+    <div class="container-wide">
+      <a href="index.html" class="cl-back reveal"><span class="arr">←</span> 포트폴리오 홈으로</a>
+
+      <div class="hero-tag reveal">
+        <span class="badge">2026</span>
+        <span class="live"></span>
+        Cover Letter · 새로운 기회를 찾고 있습니다
+      </div>
+
+      <h1 class="reveal delay-1">
+        관찰과 기록으로,<br>
+        사람과 업무 사이의 거리를<br>
+        <em>좁혀왔습니다.</em>
+      </h1>
+
+      <p class="cl-hero-lead reveal delay-2">
+        아래는 이력서에는 담기지 않는, 제가 일해온 방식에 대한 이야기입니다.<br>
+        가치관 · 성격 · 경력 · 포부, 네 가지의 짧은 글로 저를 소개합니다.
+      </p>
+
+      <div class="cl-hero-meta reveal delay-3">
+        <div><span class="k">Name</span> 김경림 (Kim Kyungrim)</div>
+        <div><span class="k">Tel</span> <a href="tel:01098919709">010-9891-9709</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────── 목차 ────── -->
+  <nav class="cl-toc" aria-label="자기소개서 목차">
+    <div class="container-wide">
+      <div class="cl-toc-label reveal">// 4가지 이야기 · Table of Contents</div>
+      <div class="cl-toc-grid">
+        <a class="cl-toc-item reveal" href="#ch01">
+          <div class="cl-toc-num">CH.01</div>
+          <div class="cl-toc-title">가치관</div>
+        </a>
+        <a class="cl-toc-item reveal delay-1" href="#ch02">
+          <div class="cl-toc-num">CH.02</div>
+          <div class="cl-toc-title">성격의 장단점</div>
+        </a>
+        <a class="cl-toc-item reveal delay-2" href="#ch03">
+          <div class="cl-toc-num">CH.03</div>
+          <div class="cl-toc-title">지원동기 · 경력</div>
+        </a>
+        <a class="cl-toc-item reveal delay-3" href="#ch04">
+          <div class="cl-toc-num">CH.04</div>
+          <div class="cl-toc-title">입사 후 포부</div>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ────── CH.01 가치관 ────── -->
+  <section class="cl-chapter" id="ch01" data-screen-label="CL - 01 가치관">
+    <div class="container-wide">
+      <div class="cl-chapter-grid">
+        <aside class="cl-chapter-side reveal">
+          <div class="cl-chapter-num">01<span class="of">/04</span></div>
+          <div class="cl-chapter-kind">Chapter · 가치관 · 성장과정</div>
+          <div class="cl-chapter-topic">다양한 경험이 경쟁력이 되었습니다</div>
+        </aside>
+        <div class="cl-chapter-main reveal delay-1">
+          <h2 class="cl-headline">다양한 경험이 <em>경쟁력</em>이 되었습니다</h2>
+          <div class="cl-prose">
+            <p>고객 응대와 서비스 업무로 사회생활을 시작해 매장 운영, 경영지원, 교육 및 SaaS 운영까지 다양한 업무를 경험하며 <span class="cl-mark">조직의 업무 흐름을 파악하는 역량</span>을 키워왔습니다.</p>
+            <p>처음에는 고객의 문의와 예약을 관리하며 정확한 안내와 원활한 커뮤니케이션의 중요성을 배웠고, 이후 매장 운영지원 업무에서는 <span class="cl-em">55개 매장의 운영을 지원하며 여러 지점이 동일한 기준으로 업무를 진행할 수 있도록 협업 시스템과 매뉴얼을 정리</span>했습니다.</p>
+            <p>이후 경영지원 업무를 담당하며 급여, 채용, 입·퇴사자 관리, 4대보험 등 인사행정을 비롯해 세금 신고와 회계 관련 업무까지 경험했습니다.</p>
+            <p>다양한 직무를 거치면서 제가 가장 잘할 수 있는 일은 단순히 주어진 업무를 처리하는 것이 아니라, <span class="cl-em">전체적인 흐름을 파악하고 필요한 정보를 정리해 사람과 업무를 연결하는 것</span>이라는 점을 알게 되었습니다. 이러한 경험을 바탕으로 조직이 안정적으로 운영될 수 있는 실무 담당자로 성장하고자 합니다.</p>
+          </div>
+          <div class="cl-summary">
+            <span class="lbl">Key</span>
+            다양한 직무 경험 <span class="arr">→</span> 사람과 업무의 연결
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────── CH.02 성격의 장단점 ────── -->
+  <section class="cl-chapter" id="ch02" data-screen-label="CL - 02 성격의 장단점">
+    <div class="container-wide">
+      <div class="cl-chapter-grid">
+        <aside class="cl-chapter-side reveal">
+          <div class="cl-chapter-num">02<span class="of">/04</span></div>
+          <div class="cl-chapter-kind">Chapter · 성격의 장단점</div>
+          <div class="cl-chapter-topic">꼼꼼함에 속도를 더하다</div>
+        </aside>
+        <div class="cl-chapter-main reveal delay-1">
+          <h2 class="cl-headline"><em>꼼꼼함</em>에 속도를 더하다</h2>
+          <div class="cl-prose">
+            <p>저의 가장 큰 장점은 <span class="cl-em">꼼꼼함과 책임감</span>입니다. 업무를 맡으면 처리 과정과 결과를 한 번 더 확인하는 편이며, 특히 <span class="cl-mark">급여, 4대보험, 세금 신고처럼 작은 실수도 이후 업무에 영향을 줄 수 있는 업무에서는 정확성을 우선으로 생각</span>합니다.</p>
+            <p>또한 새로운 업무를 맡았을 때 바로 처리하기보다 먼저 업무의 전체적인 흐름과 기준을 파악하고, 필요한 자료와 일정을 정리한 뒤 진행하는 편입니다.</p>
+            <p>반면 하나의 업무를 꼼꼼하게 확인하다 보면 다음 업무로 넘어가는 속도가 늦어지는 경우가 있었습니다. 이를 개선하기 위해 최근에는 업무 시작 전에 <span class="cl-em">마감일과 우선순위를 먼저 정하고, 반드시 확인해야 하는 업무와 빠르게 처리할 수 있는 업무를 구분</span>하여 진행하고 있습니다.</p>
+            <p>꼼꼼함을 유지하면서도 업무의 중요도와 긴급성을 판단해 속도까지 관리하는 것이 현재 제가 꾸준히 개선하고 있는 부분입니다. 이러한 성향을 바탕으로 <span class="cl-mark">정확하면서도 신속하게 업무를 처리하는 담당자</span>가 되겠습니다.</p>
+          </div>
+          <div class="cl-summary">
+            <span class="lbl">Key</span>
+            꼼꼼함 · 책임감 <span class="arr">→</span> 우선순위 관리
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────── CH.03 지원동기 · 경력 ────── -->
+  <section class="cl-chapter" id="ch03" data-screen-label="CL - 03 지원동기 경력">
+    <div class="container-wide">
+      <div class="cl-chapter-grid">
+        <aside class="cl-chapter-side reveal">
+          <div class="cl-chapter-num">03<span class="of">/04</span></div>
+          <div class="cl-chapter-kind">Chapter · 지원동기 · 경력</div>
+          <div class="cl-chapter-topic">사람과 업무 사이를 연결하겠습니다</div>
+        </aside>
+        <div class="cl-chapter-main reveal delay-1">
+          <h2 class="cl-headline">사람과 업무 사이를 <em>연결</em>하겠습니다</h2>
+          <div class="cl-prose">
+            <p>그동안의 경력을 돌아보면 인사 · 총무 · 회계 지원부터 매장 운영 관리, 문서화와 교육까지 회사 운영에 필요한 다양한 실무를 경험해왔습니다.</p>
+            <p>경영지원 업무에서는 <span class="cl-em">급여, 채용, 입·퇴사자 관리, 4대보험</span>을 담당했으며 <span class="cl-em">부가세·원천세 신고, 자금일보, 기초 회계 업무와 매입·매출 자료 정리</span>도 경험했습니다.</p>
+            <p>또한 <span class="cl-mark">55개 매장의 운영을 지원하면서 카카오워크 협업 시스템을 도입하고 운영 체계를 정리</span>했으며, 점주용 매뉴얼을 제작해 업무 기준과 정보 전달 방식을 표준화했습니다.</p>
+            <p>이후 SaaS 운영 업무에서는 사용자 문의 대응, 교육 진행, 매뉴얼과 교육자료 제작까지 담당하며 <span class="cl-em">다양한 구성원에게 필요한 정보를 정확하게 전달하는 역량</span>을 키웠습니다.</p>
+            <p>이러한 경험을 통해 경영지원·총무는 <span class="cl-mark">조직 구성원이 본연의 업무에 집중할 수 있도록 인사 · 행정 · 문서 · 운영 업무를 정확하게 지원하는 역할</span>이라고 생각하게 되었습니다. 지금까지 쌓아온 실무 경험을 가장 효과적으로 활용할 수 있는 직무라고 판단해 지원했습니다.</p>
+          </div>
+          <div class="cl-summary">
+            <span class="lbl">Key</span>
+            인사 · 회계 · 매뉴얼 <span class="arr">→</span> 정확한 지원
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────── CH.04 입사 후 포부 ────── -->
+  <section class="cl-chapter" id="ch04" data-screen-label="CL - 04 입사 후 포부">
+    <div class="container-wide">
+      <div class="cl-chapter-grid">
+        <aside class="cl-chapter-side reveal">
+          <div class="cl-chapter-num">04<span class="of">/04</span></div>
+          <div class="cl-chapter-kind">Chapter · 입사 후 포부</div>
+          <div class="cl-chapter-topic">보이지 않는 곳까지 먼저 챙기겠습니다</div>
+        </aside>
+        <div class="cl-chapter-main reveal delay-1">
+          <h2 class="cl-headline">보이지 않는 곳까지 <em>먼저 챙기겠습니다</em></h2>
+          <div class="cl-prose">
+            <p>입사 후에는 먼저 <span class="cl-em">회사의 조직 구조와 업무 프로세스, 내부 규정 및 담당 업무의 기준을 정확하게 파악</span>하겠습니다. 기존에 경험했던 업무라고 하더라도 회사마다 처리 방식과 기준이 다를 수 있기 때문에 제 방식대로 판단하기보다 회사의 업무 흐름에 맞춰 배우는 것을 우선하겠습니다.</p>
+            <p>이후에는 인사 · 총무 · 행정 업무의 일정과 자료를 꼼꼼하게 관리하고, 구성원의 문의나 요청에도 신속하게 대응하며 <span class="cl-mark">안정적인 업무 환경을 만드는 데 기여</span>하겠습니다.</p>
+            <p>업무에 익숙해진 뒤에는 <span class="cl-em">반복적으로 발생하는 문의나 비효율적인 절차를 그냥 지나치지 않고 원인을 살펴</span>보겠습니다. 그동안 매뉴얼 제작과 협업 시스템 구축, 운영 프로세스 정리를 경험한 만큼 필요한 업무는 문서화하고 구성원들이 쉽게 확인할 수 있는 형태로 정리하겠습니다.</p>
+            <p>장기적으로는 맡은 업무를 정확하게 처리하는 것을 넘어 <span class="cl-em">필요한 일을 한발 먼저 파악하고 챙기는 직원</span>이 되고 싶습니다. <span class="cl-mark">"이 업무는 맡겨도 되겠다"</span>는 신뢰를 받을 수 있는 담당자로 성장하겠습니다.</p>
+          </div>
+          <div class="cl-summary">
+            <span class="lbl">Key</span>
+            조직 이해 → 문서화 <span class="arr">→</span> 신뢰
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────── Closing (홈 contact와 동일한 CTA 언어) ────── -->
+  <section class="cl-closing" data-screen-label="CL - Closing">
+    <div class="container-wide">
+      <div class="cl-closing-tag reveal">// End of Cover Letter</div>
+      <h2 class="reveal delay-1">이야기가 마음에 드셨다면,<br>편하게 연락 주세요.</h2>
+      <p class="reveal delay-2">경력 · 프로젝트 상세 이력은 포트폴리오에서 확인하실 수 있습니다.<br>함께 이야기해보고 싶은 자리가 있다면 언제든 환영합니다.</p>
+
+      <div class="cl-closing-cta reveal delay-3">
+        <a href="tel:01098919709" class="btn-call btn-call-lg" aria-label="전화하기 010-9891-9709">
+          <span class="btn-call-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="btn-call-body">
+            <span class="btn-call-lbl">전화하기</span>
+            <span class="btn-call-num">010-9891-9709</span>
+          </span>
+          <span class="btn-call-arrow" aria-hidden="true">→</span>
+        </a>
+        <a href="index.html#projects" class="btn-call btn-call-lg btn-call-doc" aria-label="프로젝트 보러가기">
+          <span class="btn-call-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1.2"/><rect x="14" y="4" width="7" height="7" rx="1.2"/><rect x="3" y="15" width="7" height="5" rx="1.2"/><rect x="14" y="15" width="7" height="5" rx="1.2"/></svg>
+          </span>
+          <span class="btn-call-body">
+            <span class="btn-call-lbl">Projects</span>
+            <span class="btn-call-num">프로젝트 보러가기</span>
+          </span>
+          <span class="btn-call-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="cl-sign reveal delay-3">
+        <div class="cl-sign-l">
+          Written by<br>
+          <span class="en">2026 · Kyungrim Kim</span>
+        </div>
+        <div class="cl-sign-name">
+          김경림
+          <span class="en">KIM · KYUNGRIM</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ────── Footer (홈과 동일) ────── -->
+  <footer>
+    <div class="container-wide footer-inner">
+      <span>© 2026 · kim.kyungrim</span>
+      <span class="footer-tag">SaaS Operations · Education Design · AI Workflow</span>
+    </div>
+  </footer>
+
+  <!-- ────── Built-by badge (홈과 동일) ────── -->
+  <button type="button" class="built-badge" id="built-badge" aria-label="이 사이트 제작 정보 열기">
+    <span class="built-badge-dot" aria-hidden="true"></span>
+    <span class="built-badge-text">
+      <span class="built-badge-line1">Designed &amp; built by</span>
+      <span class="built-badge-line2">Kyungrim</span>
+    </span>
+  </button>
+
+  <div class="built-modal" id="built-modal" role="dialog" aria-modal="true" aria-labelledby="built-modal-title" hidden>
+    <div class="built-modal-backdrop" data-close="1"></div>
+    <div class="built-modal-panel" role="document">
+      <button type="button" class="built-modal-close" aria-label="닫기" data-close="1">×</button>
+      <div class="built-modal-eyebrow mono">// colophon</div>
+      <h3 class="built-modal-title" id="built-modal-title">이 사이트는 직접 설계·제작했습니다.</h3>
+      <p class="built-modal-body">
+        기획부터 정보 구조, 시각 디자인, 문구, 코드까지 <em>김경림</em>이 직접 작업했습니다.
+        외주 없이 혼자 만들었고, 앞으로도 계속 다듬어갈 계획입니다.
+      </p>
+      <div class="built-modal-meta">
+        <div class="built-modal-meta-row">
+          <span class="built-modal-meta-label mono">tools</span>
+          <span class="built-modal-meta-value">Genspark · HTML / CSS · GitHub Pages</span>
+        </div>
+        <div class="built-modal-meta-row">
+          <span class="built-modal-meta-label mono">source</span>
+          <span class="built-modal-meta-value">kyungrim-kim.github.io/portfolio</span>
+        </div>
+      </div>
+      <div class="built-modal-foot mono">— Kyungrim, 2026</div>
+    </div>
+  </div>
+
+  <script src="assets/scripts/reveal.js"></script>
+  <script>
+    // ── 첫 페인트 시 뷰포트 내 reveal 즉시 켜기 (홈과 동일)
+    setTimeout(() => {
+      document.querySelectorAll('.reveal:not(.is-visible)').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight) el.classList.add('is-visible');
+      });
+    }, 50);
+
+    // ── Built-by modal (홈과 동일)
+    (function () {
+      const badge = document.getElementById('built-badge');
+      const modal = document.getElementById('built-modal');
+      if (!badge || !modal) return;
+      let lastFocus = null;
+      function openModal() {
+        lastFocus = document.activeElement;
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        const closeBtn = modal.querySelector('.built-modal-close');
+        if (closeBtn) closeBtn.focus();
+      }
+      function closeModal() {
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      badge.addEventListener('click', openModal);
+      modal.addEventListener('click', (e) => {
+        if (e.target instanceof Element && e.target.dataset && e.target.dataset.close) closeModal();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+      });
+    })();
+  </script>
+
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79"}' crossorigin="anonymous"></script>
+</body>
+</html>

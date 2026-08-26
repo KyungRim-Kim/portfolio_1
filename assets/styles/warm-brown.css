@@ -1,0 +1,463 @@
+/* ────────────────────────────────────────────────────────────
+   warm-brown.css · Option C · Editorial Contrast
+   ─────────────────────────────────────────────────────────────
+   · Palette: warm beige (#f5efe6) / brown ink (#2a1f14)
+   · Fonts: Nanum Myeongjo (display), IBM Plex Sans KR (body),
+            Playfair Display (english accent), JetBrains Mono (label)
+   · Loaded AFTER tone-c.css + tone-c-refinement.css so all
+     accent-green colors and font-families are overridden by
+     token replacement — layout untouched.
+   ──────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ── Token override — warm beige/brown palette ──────────── */
+body.tone-c {
+  /* Backgrounds */
+  --c-bg:          #f5efe6;   /* main warm beige */
+  --c-bg-2:        #ebe1d1;   /* deeper beige wash */
+  --c-bg-3:        #e0d3bd;   /* deepest */
+  --c-panel:       #fbf7f0;   /* card background */
+  --c-panel-2:     #f5efe6;
+  --c-panel-hover: #f0e7d6;
+
+  /* Borders */
+  --c-border:        rgba(90, 65, 40, 0.14);
+  --c-border-strong: rgba(90, 65, 40, 0.28);
+
+  /* Ink / text */
+  --c-text:   #2a1f14;   /* deep brown ink */
+  --c-text-2: #5c4a38;   /* medium brown */
+  --c-text-3: #8b7355;   /* light brown */
+  --c-text-4: #b8a48a;   /* faint */
+
+  /* Primary accent — warm brown (replaces apple green) */
+  --c-apple:        #8b5a2b;   /* mid brown */
+  --c-apple-2:      #a06f3f;   /* lighter */
+  --c-apple-3:      #b8896a;   /* lightest */
+  --c-apple-deep:   #5c3a1e;   /* deep brown for strong text */
+  --c-apple-soft:   #f0e2ce;   /* soft wash */
+  --c-apple-soft-2: #e2ccae;   /* soft border/tag */
+  --c-apple-glow:   rgba(139, 90, 43, 0.22);
+  --c-apple-wash:   rgba(139, 90, 43, 0.06);
+
+  /* Sub accent — muted terracotta (replaces mint) */
+  --c-mint:      #a25a3b;
+  --c-mint-2:    #b8704f;
+  --c-mint-soft: #f2e2d5;
+  --c-mint-glow: rgba(162, 90, 59, 0.15);
+
+  /* Utility accents */
+  --c-blue:   #7a5b3a;
+  --c-purple: #8b5a5f;
+  --c-warn:   #b76a1e;
+
+  /* Fonts */
+  --c-font-sans: 'IBM Plex Sans KR', 'Pretendard', -apple-system, system-ui, sans-serif;
+  --c-font-mono: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+  --c-font-kr:   'IBM Plex Sans KR', 'Pretendard', -apple-system, 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --c-font-serif:'Nanum Myeongjo', 'Noto Serif KR', serif;
+  --c-font-display-en: 'Playfair Display', 'Nanum Myeongjo', serif;
+
+  /* Warmer shadow with brown tint */
+  --c-shadow-sm: 0 1px 2px rgba(60, 40, 20, 0.06);
+  --c-shadow-md: 0 4px 12px -2px rgba(60, 40, 20, 0.10);
+  --c-shadow-lg: 0 20px 40px -12px rgba(60, 40, 20, 0.15);
+
+  /* Meta color */
+  color: var(--c-text);
+  background: var(--c-bg);
+  font-family: var(--c-font-kr);
+  background-image:
+    radial-gradient(1200px 600px at 15% -5%, rgba(139, 90, 43, 0.06), transparent 60%),
+    radial-gradient(900px 500px at 100% 15%, rgba(139, 90, 43, 0.04), transparent 65%),
+    radial-gradient(700px 500px at 50% 100%, rgba(162, 90, 59, 0.03), transparent 70%);
+}
+
+/* Subtle grid overlay — soften and warm it */
+body.tone-c::before {
+  background-image:
+    linear-gradient(rgba(60, 40, 20, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(60, 40, 20, 0.03) 1px, transparent 1px);
+}
+
+/* Meta theme-color for browser chrome */
+/* (Body class won't affect <meta>; user can update HTML if desired) */
+
+/* ── Typography — Nanum Myeongjo for display, Plex for body ── */
+
+.tone-c .display-1,
+.tone-c .display-2,
+.tone-c .heading {
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+.tone-c .display-1 { font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+.tone-c .display-1 .kr { font-family: var(--c-font-serif); font-weight: 800; }
+.tone-c .display-2 .kr { font-family: var(--c-font-serif); font-weight: 800; }
+
+.tone-c .display-1,
+.tone-c .display-2 { color: var(--c-text); }
+
+/* Eyebrow — mono in warm brown */
+.tone-c .eyebrow {
+  font-family: var(--c-font-mono);
+  color: var(--c-apple-deep);
+  letter-spacing: 0.1em;
+  text-transform: none;
+  font-weight: 500;
+}
+
+.tone-c .lede,
+.tone-c .body { font-family: var(--c-font-kr); color: var(--c-text-2); }
+.tone-c .mono { font-family: var(--c-font-mono); }
+
+/* ── Nav ─────────────────────────────────────────────────── */
+.tone-c .nav {
+  background: rgba(245, 239, 230, 0.85);
+  border-bottom-color: var(--c-border);
+}
+.tone-c .nav-brand {
+  font-family: var(--c-font-mono);
+  color: var(--c-text);
+  font-weight: 600;
+}
+.tone-c .nav-brand::before {
+  background: var(--c-apple);
+  box-shadow: 0 0 0 3px var(--c-apple-soft);
+}
+.tone-c .nav-links {
+  font-family: var(--c-font-mono);
+  color: var(--c-text-2);
+}
+.tone-c .nav-links a:hover,
+.tone-c .nav-links a.active { color: var(--c-apple-deep); }
+.tone-c .nav-links a.active::after { background: var(--c-apple); }
+.tone-c .nav-cta {
+  background: var(--c-text);
+  color: var(--c-panel);
+  font-family: var(--c-font-mono);
+}
+.tone-c .nav-cta:hover {
+  background: var(--c-apple);
+  box-shadow: 0 4px 12px var(--c-apple-glow);
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.tone-c .hero-tag {
+  background: var(--c-panel);
+  border-color: var(--c-border);
+  color: var(--c-text-2);
+  font-family: var(--c-font-mono);
+}
+.tone-c .hero-tag .badge {
+  background: var(--c-apple);
+  color: var(--c-panel);
+}
+.tone-c .hero-tag .live {
+  background: var(--c-apple);
+  box-shadow: 0 0 0 3px var(--c-apple-soft);
+}
+
+.tone-c .hero-position {
+  font-family: var(--c-font-mono);
+  color: var(--c-apple-deep);
+}
+.tone-c .hero-position .x { color: var(--c-text-3); }
+
+.tone-c .display-1 .kr,
+.tone-c .hero .display-1 {
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+}
+
+.tone-c .hero-lead,
+.tone-c .hero-statement-line,
+.tone-c .hero-sub-detail {
+  font-family: var(--c-font-kr);
+}
+.tone-c .hero-statement-line {
+  color: var(--c-text);
+  font-weight: 600;
+  border-left: 3px solid var(--c-apple);
+  padding-left: 18px;
+  background: rgba(176, 138, 91, 0.06);
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+.tone-c .hero-sub-detail { color: var(--c-text-3); }
+
+/* Hero portrait — warm frame */
+.tone-c .hero-portrait {
+  border-color: var(--c-apple-soft-2);
+  background: var(--c-bg-2);
+  box-shadow:
+    var(--c-shadow-lg),
+    0 0 0 6px var(--c-apple-wash),
+    0 24px 60px -20px var(--c-apple-glow);
+}
+.tone-c .portrait-stats {
+  background: rgba(251, 247, 240, 0.96);
+  border-color: var(--c-border);
+  font-family: var(--c-font-mono);
+}
+.tone-c .portrait-stats .stat-num {
+  color: var(--c-apple-deep);
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+}
+.tone-c .portrait-stats .stat-lbl { color: var(--c-text-3); }
+
+/* ── Buttons: btn-call (phone/doc CTA) ────────────────────── */
+.tone-c .btn-call {
+  background: var(--c-text);
+  color: var(--c-panel);
+  font-family: var(--c-font-mono);
+  border: none;
+}
+.tone-c .btn-call:hover {
+  background: var(--c-apple-deep);
+  box-shadow: var(--c-shadow-md), 0 10px 24px -8px var(--c-apple-glow);
+}
+.tone-c .btn-call-doc {
+  background: var(--c-panel);
+  color: var(--c-text);
+  border: 1px solid var(--c-border-strong);
+}
+.tone-c .btn-call-doc:hover {
+  background: var(--c-panel-hover);
+  border-color: var(--c-apple);
+  color: var(--c-apple-deep);
+}
+.tone-c .btn-call-lbl { color: var(--c-text-3); }
+.tone-c .btn-call-num { color: currentColor; }
+.tone-c .btn-call-icon { color: var(--c-apple-3); }
+.tone-c .btn-call-doc .btn-call-icon { color: var(--c-apple); }
+
+/* ── Philosophy card ─────────────────────────────────────── */
+.tone-c .philosophy-editorial .ph-label,
+.tone-c .philosophy-card .mono-label {
+  font-family: var(--c-font-mono);
+  color: var(--c-apple-deep);
+}
+.tone-c .philosophy-editorial .ph-quote,
+.tone-c .philosophy-card blockquote {
+  font-family: var(--c-font-serif);
+  font-weight: 700;
+  color: var(--c-text);
+  letter-spacing: -0.015em;
+}
+.tone-c .philosophy-editorial .ph-quote em,
+.tone-c .philosophy-card blockquote em {
+  font-family: var(--c-font-serif);
+  font-style: normal;
+  font-weight: 800;
+  color: var(--c-apple-deep);
+  background: linear-gradient(180deg, transparent 62%, rgba(176, 138, 91, 0.28) 62%);
+  padding: 0 3px;
+}
+.tone-c .philosophy-editorial .ph-sub,
+.tone-c .philosophy-card .sub {
+  color: var(--c-text-2);
+  font-family: var(--c-font-kr);
+}
+.tone-c .philosophy-card {
+  background:
+    linear-gradient(135deg, rgba(139, 90, 43, 0.08) 0%, rgba(139, 90, 43, 0.02) 55%, rgba(162, 90, 59, 0.04) 100%),
+    var(--c-panel);
+  border-color: var(--c-apple-soft-2);
+}
+.tone-c .philosophy-card::before { color: var(--c-apple); }
+
+/* ── About body ──────────────────────────────────────────── */
+.tone-c #about-body p { font-family: var(--c-font-kr); color: var(--c-text-2); }
+
+/* ── Strengths — hidden anyway, but style just in case ───── */
+.tone-c .strength-title { font-family: var(--c-font-serif); font-weight: 700; }
+.tone-c .strength-num { color: var(--c-apple-deep); }
+.tone-c .strength:hover { border-color: var(--c-apple); }
+.tone-c .strength-editorial .strength-num { color: var(--c-apple-deep); font-family: var(--c-font-mono); }
+
+/* ── Skills ──────────────────────────────────────────────── */
+.tone-c .skill-group h3,
+.tone-c .skill-cap-label,
+.tone-c .skill-cap-title { font-family: var(--c-font-mono); }
+.tone-c .skill-cap-title { font-family: var(--c-font-serif); font-weight: 700; color: var(--c-text); }
+.tone-c .skill-group h3 { color: var(--c-apple-deep); }
+.tone-c .skill-list li,
+.tone-c .skill-tools li {
+  background: var(--c-bg-2);
+  border-color: var(--c-border);
+  color: var(--c-text-2);
+  font-family: var(--c-font-mono);
+}
+
+/* ── Timeline ────────────────────────────────────────────── */
+.tone-c .tl-period,
+.tone-c .tl-role,
+.tone-c .tl-tag { font-family: var(--c-font-mono); }
+.tone-c .tl-duration { color: var(--c-apple-deep); }
+.tone-c .tl-company {
+  font-family: var(--c-font-serif);
+  font-weight: 700;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
+}
+.tone-c .tl-highlight {
+  background: var(--c-apple-soft);
+  color: var(--c-apple-deep);
+  border-color: var(--c-apple-soft-2);
+  font-family: var(--c-font-mono);
+}
+.tone-c .tl-key {
+  background: var(--c-apple);
+  color: var(--c-panel);
+}
+.tone-c .tl-press-lbl { color: var(--c-apple-deep); font-family: var(--c-font-mono); }
+.tone-c .tl-desc { color: var(--c-text-2); font-family: var(--c-font-kr); }
+.tone-c .timeline-item { background: var(--c-panel); border-color: var(--c-border); }
+.tone-c .timeline-item:hover { border-color: var(--c-border-strong); }
+.tone-c .timeline-item.major { border-left: 3px solid var(--c-apple); }
+
+/* ── Projects ────────────────────────────────────────────── */
+.tone-c .featured-num,
+.tone-c .featured-subtitle,
+.tone-c .other-subtitle,
+.tone-c .meta-lbl,
+.tone-c .impact-lbl,
+.tone-c .other-label,
+.tone-c .featured-label { font-family: var(--c-font-mono); color: var(--c-apple-deep); }
+
+.tone-c .featured-title,
+.tone-c .other-title,
+.tone-c .project-title {
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+  color: var(--c-text);
+  letter-spacing: -0.01em;
+}
+.tone-c .featured-tagline,
+.tone-c .other-tagline,
+.tone-c .project-tagline {
+  font-family: var(--c-font-kr);
+  color: var(--c-text-2);
+}
+.tone-c .impact-num {
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+  color: var(--c-apple-deep);
+}
+.tone-c .featured-card,
+.tone-c .other-card,
+.tone-c .project-card { background: var(--c-panel); border-color: var(--c-border); }
+.tone-c .featured-card:hover,
+.tone-c .other-card:hover,
+.tone-c .project-card:hover { border-color: var(--c-apple); }
+
+/* ── Credentials ─────────────────────────────────────────── */
+.tone-c .cred-col-title,
+.tone-c .cred-panel h3 {
+  font-family: var(--c-font-mono);
+  color: var(--c-apple-deep);
+}
+.tone-c .cred-name,
+.tone-c .cred-item { font-family: var(--c-font-mono); }
+.tone-c .cred-grade { background: var(--c-apple-soft); color: var(--c-apple-deep); }
+.tone-c .edu-school {
+  font-family: var(--c-font-serif);
+  font-weight: 700;
+  color: var(--c-text);
+}
+.tone-c .edu-degree { color: var(--c-text-2); font-family: var(--c-font-kr); }
+.tone-c .edu-meta { color: var(--c-text-3); font-family: var(--c-font-mono); }
+
+/* ── Aspiration — deep brown card ────────────────────────── */
+.tone-c .aspiration-card {
+  background: linear-gradient(135deg, #2a1f14 0%, #3d2c1a 100%);
+  color: #fbf7f0;
+}
+.tone-c .aspiration-card::before {
+  background: radial-gradient(circle, rgba(176, 138, 91, 0.45), transparent 70%);
+}
+.tone-c .aspiration-card::after {
+  background: radial-gradient(circle, rgba(139, 90, 43, 0.35), transparent 70%);
+}
+.tone-c .aspiration-card .eyebrow { color: #d9b48a; }
+.tone-c .aspiration-card h2 {
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+  color: #fbf7f0;
+}
+.tone-c .aspiration-card p {
+  color: rgba(251, 247, 240, 0.85);
+  font-family: var(--c-font-kr);
+}
+
+/* ── Contact ─────────────────────────────────────────────── */
+/* Note: .tone-c .contact h2 in tone-c.css has specificity 0,0,2,1 —
+   we need at least equal specificity + later cascade to win. */
+.tone-c .contact h2.contact-title,
+.tone-c section.contact .contact-title {
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+  color: var(--c-text);
+  letter-spacing: -0.02em;
+}
+.tone-c .contact h2.contact-title em,
+.tone-c section.contact .contact-title em {
+  font-family: var(--c-font-serif);
+  font-style: normal;
+  font-weight: 800;
+  color: var(--c-apple-deep);
+  background: linear-gradient(180deg, transparent 62%, rgba(176, 138, 91, 0.28) 62%);
+  padding: 0 4px;
+}
+.tone-c .contact-desc { color: var(--c-text-2); font-family: var(--c-font-kr); }
+.tone-c .contact-btn { background: var(--c-panel); border-color: var(--c-border); font-family: var(--c-font-mono); }
+.tone-c .contact-btn:hover { border-color: var(--c-apple); }
+.tone-c .contact-btn .lbl { color: var(--c-text-3); }
+.tone-c .contact-btn .arrow { color: var(--c-apple-deep); }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.tone-c footer {
+  border-top-color: var(--c-border);
+  color: var(--c-text-3);
+  font-family: var(--c-font-mono);
+}
+
+/* ── Built-by badge & modal ──────────────────────────────── */
+.tone-c .built-badge {
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
+  color: var(--c-text);
+  font-family: var(--c-font-mono);
+}
+.tone-c .built-badge:hover { border-color: var(--c-apple); }
+.tone-c .built-badge-dot { background: var(--c-apple); box-shadow: 0 0 0 3px var(--c-apple-soft); }
+.tone-c .built-badge-line1 { color: var(--c-text-3); }
+.tone-c .built-modal-panel {
+  background: var(--c-panel);
+  border: 1px solid var(--c-border);
+}
+.tone-c .built-modal-eyebrow { color: var(--c-apple-deep); font-family: var(--c-font-mono); }
+.tone-c .built-modal-title {
+  font-family: var(--c-font-serif);
+  font-weight: 800;
+  color: var(--c-text);
+}
+.tone-c .built-modal-body { color: var(--c-text-2); font-family: var(--c-font-kr); }
+.tone-c .built-modal-body em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--c-apple-deep);
+  border-bottom: 2px solid var(--c-apple-soft-2);
+}
+.tone-c .built-modal-meta-label { color: var(--c-apple-deep); font-family: var(--c-font-mono); }
+.tone-c .built-modal-meta-value { color: var(--c-text-2); font-family: var(--c-font-mono); }
+.tone-c .built-modal-foot { color: var(--c-text-3); font-family: var(--c-font-mono); }
+.tone-c .built-modal-close { color: var(--c-text-3); }
+.tone-c .built-modal-close:hover { color: var(--c-text); }
+
+/* ── Utility overrides for inline color hints ────────────── */
+.tone-c [style*="--c-apple-deep"] { color: var(--c-apple-deep) !important; }

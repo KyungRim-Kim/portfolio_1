@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>김경림 · 자기소개서 — 4가지 이야기</title>
+  <meta name="description" content="흩어진 절차를 문서로 이어 조직의 안정을 만들어온 김경림의 자기소개서. 가치관 · 성격의 장단점 · 지원동기와 경력 · 입사 후 포부.">
+  <meta name="theme-color" content="#7A5A2E">
+  <link rel="stylesheet" href="assets/styles/base.css">
+  <link rel="stylesheet" href="assets/styles/warm-sand.css">
+  <style>
+    .cl-body { background: var(--w-bg); color: var(--w-text); font-family: var(--w-font-kr); }
+
+    /* ─── HERO ─── */
+    .cl-hero {
+      padding: 100px 0 70px;
+      border-bottom: 1px solid var(--w-border);
+      background:
+        radial-gradient(ellipse at 20% 0%, var(--w-bronze-soft), transparent 55%),
+        var(--w-bg);
+    }
+    .cl-hero-inner { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+    .cl-back {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--w-font-mono); font-size: 0.82rem;
+      color: var(--w-text-3); text-decoration: none;
+      margin-bottom: 32px;
+      padding: 6px 12px;
+      background: var(--w-panel);
+      border: 1px solid var(--w-border);
+      border-radius: 999px;
+    }
+    .cl-back:hover { color: var(--w-bronze-deep); border-color: var(--w-bronze); }
+    .cl-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--w-font-mono); font-size: 0.75rem;
+      color: var(--w-text-3); letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 6px 12px; border: 1px solid var(--w-border);
+      background: var(--w-panel); border-radius: 999px;
+      box-shadow: var(--w-sh-sm);
+    }
+    .cl-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--w-bronze); box-shadow: 0 0 0 3px var(--w-bronze-soft); }
+    .cl-hero h1 {
+      font-family: var(--w-font-kr);
+      font-size: clamp(2.2rem, 4.8vw, 3.8rem);
+      font-weight: 700;
+      line-height: 1.18;
+      letter-spacing: -0.02em;
+      margin: 24px 0 20px;
+      color: var(--w-text);
+      text-wrap: pretty;
+    }
+    .cl-hero h1 em {
+      font-style: italic;
+      font-family: var(--w-font-serif);
+      font-weight: 500;
+      color: var(--w-bronze-deep);
+    }
+    .cl-hero-lead {
+      font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+      line-height: 1.75;
+      color: var(--w-text-2);
+      max-width: 720px;
+      text-wrap: pretty;
+    }
+    .cl-hero-meta {
+      display: flex; flex-wrap: wrap; gap: 20px 40px;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px dashed var(--w-border-strong);
+      font-family: var(--w-font-mono); font-size: 0.82rem;
+      color: var(--w-text-2);
+    }
+    .cl-hero-meta .k { color: var(--w-text-3); letter-spacing: 0.1em; text-transform: uppercase; margin-right: 8px; font-size: 0.72rem; }
+    .cl-hero-meta a { color: var(--w-text); border-bottom: 1px solid var(--w-border-strong); padding-bottom: 1px; }
+    .cl-hero-meta a:hover { color: var(--w-bronze-deep); border-color: var(--w-bronze); }
+
+    /* ─── TOC ─── */
+    .cl-toc {
+      background: var(--w-panel-2);
+      border-bottom: 1px solid var(--w-border);
+      padding: 32px 0;
+    }
+    .cl-toc-inner { max-width: 1080px; margin: 0 auto; padding: 0 40px; }
+    .cl-toc-label {
+      font-family: var(--w-font-mono); font-size: 0.72rem;
+      color: var(--w-text-3); letter-spacing: 0.16em; text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .cl-toc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .cl-toc-item {
+      display: block;
+      padding: 16px 18px;
+      background: var(--w-panel);
+      border: 1px solid var(--w-border);
+      border-radius: 10px;
+      transition: all .2s;
+    }
+    .cl-toc-item:hover {
+      border-color: var(--w-bronze);
+      transform: translateY(-2px);
+      box-shadow: var(--w-sh-md);
+    }
+    .cl-toc-num {
+      font-family: var(--w-font-serif); font-style: italic;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--w-bronze-deep);
+      margin-bottom: 4px;
+    }
+    .cl-toc-title {
+      font-family: var(--w-font-kr); font-weight: 600;
+      font-size: 0.96rem; color: var(--w-text);
+      line-height: 1.4;
+    }
+    @media (max-width: 780px) { .cl-toc-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ─── Chapters ─── */
+    .cl-chapter {
+      padding: 90px 0;
+      border-bottom: 1px solid var(--w-border);
+    }
+    .cl-chapter:nth-of-type(odd) { background: var(--w-bg); }
+    .cl-chapter:nth-of-type(even) { background: var(--w-panel-2); }
+    .cl-chapter-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 40px;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 60px;
+    }
+    @media (max-width: 900px) {
+      .cl-chapter-inner { grid-template-columns: 1fr; gap: 30px; }
+    }
+
+    .cl-chapter-side { position: sticky; top: 40px; align-self: start; }
+    .cl-chapter-num {
+      font-family: var(--w-font-serif); font-style: italic;
+      font-size: 5rem; font-weight: 600;
+      line-height: 0.9;
+      color: var(--w-bronze);
+      letter-spacing: -0.04em;
+    }
+    .cl-chapter-num .of {
+      font-size: 1rem; color: var(--w-text-3);
+      font-family: var(--w-font-mono); font-style: normal;
+      font-weight: 400;
+      letter-spacing: 0.1em; margin-left: 4px;
+      vertical-align: super;
+    }
+    .cl-chapter-kind {
+      margin-top: 12px;
+      font-family: var(--w-font-mono); font-size: 0.72rem;
+      color: var(--w-text-3); letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .cl-chapter-topic {
+      margin-top: 8px;
+      font-family: var(--w-font-kr); font-weight: 700;
+      font-size: 1.05rem; color: var(--w-text);
+      letter-spacing: -0.01em;
+    }
+
+    .cl-chapter-main { min-width: 0; }
+    .cl-headline {
+      font-family: var(--w-font-kr);
+      font-weight: 700;
+      font-size: clamp(1.55rem, 3vw, 2.2rem);
+      line-height: 1.32;
+      letter-spacing: -0.015em;
+      color: var(--w-text);
+      margin-bottom: 32px;
+      text-wrap: pretty;
+      position: relative;
+      padding-left: 22px;
+    }
+    .cl-headline::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0.5em;
+      width: 10px; height: 3px;
+      background: var(--w-bronze);
+    }
+    .cl-prose {
+      font-family: var(--w-font-kr);
+      font-size: 1.04rem;
+      line-height: 1.95;
+      color: var(--w-text);
+      text-wrap: pretty;
+    }
+    .cl-prose p { margin-bottom: 1.3em; }
+    .cl-prose p:last-child { margin-bottom: 0; }
+    .cl-mark {
+      background: linear-gradient(180deg, transparent 60%, var(--w-bronze-soft) 60%);
+      padding: 0 2px;
+      font-weight: 500;
+    }
+    .cl-em {
+      color: var(--w-bronze-deep);
+      font-weight: 600;
+    }
+
+    .cl-summary {
+      margin-top: 36px;
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 12px 20px;
+      background: var(--w-panel);
+      border: 1px solid var(--w-border-strong);
+      border-radius: 999px;
+      font-family: var(--w-font-mono); font-size: 0.85rem;
+      color: var(--w-text);
+      box-shadow: var(--w-sh-sm);
+    }
+    .cl-summary .lbl { color: var(--w-text-3); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+    .cl-summary .arr { color: var(--w-bronze-deep); }
+
+    /* ─── Closing ─── */
+    .cl-closing {
+      padding: 100px 0 80px;
+      background:
+        radial-gradient(ellipse at 80% 100%, var(--w-bronze-soft), transparent 55%),
+        var(--w-bg);
+      border-bottom: 1px solid var(--w-border);
+    }
+    .cl-closing-inner { max-width: 900px; margin: 0 auto; padding: 0 40px; text-align: center; }
+    .cl-closing-tag {
+      font-family: var(--w-font-mono); font-size: 0.75rem;
+      color: var(--w-bronze-deep); letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .cl-closing h2 {
+      font-family: var(--w-font-kr); font-weight: 700;
+      font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+      line-height: 1.38;
+      color: var(--w-text);
+      margin-bottom: 20px;
+      text-wrap: pretty;
+    }
+    .cl-closing h2 em { font-style: italic; font-family: var(--w-font-serif); color: var(--w-bronze-deep); font-weight: 500; }
+    .cl-closing p {
+      font-size: 1.04rem; line-height: 1.8;
+      color: var(--w-text-2);
+      max-width: 640px; margin: 0 auto;
+    }
+    .cl-closing-cta {
+      display: inline-flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+      margin-top: 40px;
+    }
+    .cl-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 22px;
+      border-radius: 10px;
+      font-family: var(--w-font-mono); font-size: 0.88rem; font-weight: 600;
+      transition: all .2s;
+    }
+    .cl-btn-primary {
+      background: var(--w-text); color: var(--w-bg);
+      box-shadow: var(--w-sh-md);
+    }
+    .cl-btn-primary:hover {
+      background: var(--w-bronze-deep); transform: translateY(-2px);
+      box-shadow: 0 12px 24px -6px var(--w-bronze-glow);
+    }
+    .cl-btn-secondary {
+      background: var(--w-panel); color: var(--w-text);
+      border: 1px solid var(--w-border-strong);
+    }
+    .cl-btn-secondary:hover {
+      background: var(--w-panel-hov);
+      border-color: var(--w-bronze);
+      color: var(--w-bronze-deep);
+    }
+  </style>
+</head>
+<body class="warm cl-body" data-screen-label="Cover Letter">
+
+<!-- HERO -->
+<section class="cl-hero">
+  <div class="cl-hero-inner">
+    <a href="index.html" class="cl-back"><span class="arr">←</span> 포트폴리오로</a>
+    <div class="cl-eyebrow"><span class="dot"></span> Cover Letter · 자기소개서</div>
+    <h1>흩어진 일을 <em>문서로 이어</em>,<br>조직의 안정을 만듭니다.</h1>
+    <p class="cl-hero-lead">서비스센터 리셉션에서 경영지원 파트장까지 — 9년 11개월간 다섯 개의 조직을 거치며 반복해서 확인한 것은 하나였습니다. 조직이 흔들리지 않는 힘은 개인의 기억이 아니라, 남겨진 문서와 프로세스에서 나옵니다.</p>
+    <div class="cl-hero-meta">
+      <div><span class="k">Name</span>김경림 (Kim Kyung Rim)</div>
+      <div><span class="k">Position</span>경영지원 · 총무</div>
+      <div><span class="k">Contact</span><a href="tel:01098919709">010-9891-9709</a></div>
+      <div><span class="k">Email</span><a href="mailto:kimkr970909@naver.com">kimkr970909@naver.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- TOC -->
+<section class="cl-toc">
+  <div class="cl-toc-inner">
+    <div class="cl-toc-label">/// 4개의 챕터로 이루어진 이야기</div>
+    <div class="cl-toc-grid">
+      <a href="#ch1" class="cl-toc-item">
+        <div class="cl-toc-num">01</div>
+        <div class="cl-toc-title">가치관<br>— 관찰과 기록의 사람</div>
+      </a>
+      <a href="#ch2" class="cl-toc-item">
+        <div class="cl-toc-num">02</div>
+        <div class="cl-toc-title">장단점<br>— 꼼꼼함과 나눔</div>
+      </a>
+      <a href="#ch3" class="cl-toc-item">
+        <div class="cl-toc-num">03</div>
+        <div class="cl-toc-title">지원동기 · 경력<br>— 백오피스에서 시스템으로</div>
+      </a>
+      <a href="#ch4" class="cl-toc-item">
+        <div class="cl-toc-num">04</div>
+        <div class="cl-toc-title">입사 후 포부<br>— 조용히 굴러가는 조직</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CH 01 · 가치관 -->
+<section class="cl-chapter" id="ch1">
+  <div class="cl-chapter-inner">
+    <div class="cl-chapter-side">
+      <div class="cl-chapter-num">01<span class="of">/04</span></div>
+      <div class="cl-chapter-kind">Values</div>
+      <div class="cl-chapter-topic">가치관</div>
+    </div>
+    <div class="cl-chapter-main">
+      <h2 class="cl-headline">사람을 지치게 하는 것은 일의 양이 아니라, 매번 처음부터 찾아야 하는 반복이었습니다.</h2>
+      <div class="cl-prose">
+        <p>서비스센터 리셉션에서 커리어를 시작했습니다. 매일 다른 고객을 응대하면서 오래 관찰해온 한 가지가 있었습니다. 같은 상황이 반복되는데도 <span class="cl-em">기록이 남지 않으면 매번 새로운 일처럼 다뤄진다</span>는 것이었습니다.</p>
+        <p>이후 매장 운영, 인사·회계 실무, 대외 프로젝트 운영 현장을 거치면서 이 관찰은 저의 일하는 방식이 되었습니다. 저는 문제를 개인의 노력으로만 풀지 않습니다. <span class="cl-mark">눈에 보이지 않던 절차를 문서로 남기고, 다음 사람이 처음부터 헤매지 않도록 프로세스를 만드는 것</span>이 제가 조직에 기여하는 방식입니다.</p>
+        <p>경영지원과 총무는 그런 관점이 가장 잘 쓰이는 자리라고 생각합니다. 담당자가 바뀌어도 조직이 흔들리지 않는 이유는, 잘 정리된 문서와 반복 가능한 프로세스에서 나오기 때문입니다.</p>
+      </div>
+      <div class="cl-summary">
+        <span class="lbl">Keyword</span>
+        관찰 · 기록 · 반복 가능한 구조 <span class="arr">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CH 02 · 장단점 -->
+<section class="cl-chapter" id="ch2">
+  <div class="cl-chapter-inner">
+    <div class="cl-chapter-side">
+      <div class="cl-chapter-num">02<span class="of">/04</span></div>
+      <div class="cl-chapter-kind">Strengths & Weakness</div>
+      <div class="cl-chapter-topic">성격의 장단점</div>
+    </div>
+    <div class="cl-chapter-main">
+      <h2 class="cl-headline">'꼼꼼함'을 개인 성향으로 두지 않고, 조직 자산으로 남기려 노력합니다.</h2>
+      <div class="cl-prose">
+        <p>제 장점은 <span class="cl-em">꼼꼼함과 문서화 습관</span>입니다. 급여·4대보험·부가세 신고 같은 실무는 작은 실수가 곧 조직의 리스크가 됩니다. 저는 반복 업무는 반드시 체크리스트로 만들고, 처음 하는 업무는 절차를 문서로 남긴 뒤 다음 담당자가 그대로 따라 할 수 있는지 스스로 검증합니다. 원라인 경영지원 파트장으로 인사·회계·세무를 단독 운영할 때, 그리고 키플레이스에서 55개 매장의 운영 매뉴얼을 표준화할 때 이 습관이 조직에 가장 크게 기여했다고 생각합니다.</p>
+        <p>단점은 <span class="cl-em">완성도에 대한 욕심 때문에 초기에 시간이 오래 걸린다</span>는 점입니다. 특히 처음 만드는 문서일수록 '이 정도면 되겠지' 하고 넘어가지 못하는 편입니다. 이 부분은 <span class="cl-mark">중요도에 따라 완성도의 기준을 다르게 두는 방식</span>으로 보완하고 있습니다. 급여 지급이나 세무 신고처럼 오류가 치명적인 업무는 시간을 충분히 쓰고, 반복 회의록이나 내부 공지는 초안을 빠르게 공유한 뒤 피드백을 받아 다듬는 순서로 진행합니다.</p>
+        <p>결국 꼼꼼함은 개인의 강점이 아니라, 조직에 남는 문서로 이어질 때 진짜 강점이 된다고 생각합니다.</p>
+      </div>
+      <div class="cl-summary">
+        <span class="lbl">Keyword</span>
+        꼼꼼함 · 문서화 · 우선순위 <span class="arr">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CH 03 · 지원동기 & 경력 -->
+<section class="cl-chapter" id="ch3">
+  <div class="cl-chapter-inner">
+    <div class="cl-chapter-side">
+      <div class="cl-chapter-num">03<span class="of">/04</span></div>
+      <div class="cl-chapter-kind">Motivation & Career</div>
+      <div class="cl-chapter-topic">지원동기와 경력</div>
+    </div>
+    <div class="cl-chapter-main">
+      <h2 class="cl-headline">인사·회계·총무 실무를 <em>한 사람이 안정적으로 굴리는 힘</em>을 쌓아왔습니다.</h2>
+      <div class="cl-prose">
+        <p>제 커리어는 서비스센터 CS에서 시작해 경영지원 백오피스로 이어졌습니다. 서로 다른 산업이었지만 관통하는 하나의 관점이 있었습니다. <span class="cl-mark">"눈에 보이지 않는 절차를 어떻게 조직의 자산으로 남길 것인가."</span></p>
+        <p>선인자동차·교학모터스 서비스센터(2015 – 2021)에서는 예약 workflow와 CS 매뉴얼을 정리하며 <span class="cl-em">프로세스 관점</span>을 익혔습니다. 2017년에는 포드 서비스 엑설런스 프로그램 리셉션니스트 부문에 전국 상위 5인으로 본선 진출·수상하기도 했습니다.</p>
+        <p>키플레이스(2021.05 – 2023.06)에서는 경영관리팀 소속으로 <span class="cl-em">55개 매장의 카카오워크 협업 시스템 도입</span>과 15종 이상의 표준 매뉴얼 제작을 주도했습니다. 개인의 머릿속에 있던 노하우를 문서로 옮기는 일이 매장 전체의 운영 안정성으로 이어지는 것을 확인한 시기였습니다.</p>
+        <p>원라인(2023.08 – 2024.07)에서는 경영지원 파트장으로 <span class="cl-em">인사·급여·4대보험·부가세·원천세 신고·자금일보·기초 회계</span>까지 백오피스 전반을 단독 운영했습니다. 용인시 지원사업 행정 실무도 함께 담당하며, 대내외 이해관계자를 아우르는 실무 감각을 익혔습니다.</p>
+        <p>현재 심테크시스템(2024.09 – )에서는 SaaS 사용자 교육과 함께 <span class="cl-em">법무연수원 교육 운영, 청소년 마인드맵 경진대회 총괄</span> 같은 외부 프로젝트를 진행하며 다수 이해관계자가 참여하는 프로젝트 운영 감각을 넓히고 있습니다.</p>
+        <p>이 경험들을 바탕으로, 조직의 백오피스가 조용하게 굴러가도록 만드는 자리에서 오래 일하고 싶어 지원하게 되었습니다.</p>
+      </div>
+      <div class="cl-summary">
+        <span class="lbl">Keyword</span>
+        인사·회계·세무 통합 · 매뉴얼 표준화 · 프로젝트 운영 <span class="arr">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CH 04 · 입사 후 포부 -->
+<section class="cl-chapter" id="ch4">
+  <div class="cl-chapter-inner">
+    <div class="cl-chapter-side">
+      <div class="cl-chapter-num">04<span class="of">/04</span></div>
+      <div class="cl-chapter-kind">Aspiration</div>
+      <div class="cl-chapter-topic">입사 후 포부</div>
+    </div>
+    <div class="cl-chapter-main">
+      <h2 class="cl-headline">사람이 바뀌어도 흔들리지 않는 <em>백오피스</em>를 만들고 싶습니다.</h2>
+      <div class="cl-prose">
+        <p>입사 후에는 먼저 <span class="cl-em">기존 팀의 업무 흐름을 관찰</span>하는 시간을 갖겠습니다. 어떤 문서는 이미 잘 정리되어 있고, 어떤 절차는 담당자의 기억에만 남아 있는지 파악하는 것이 첫 번째 할 일이라 생각합니다.</p>
+        <p>이후에는 제가 잘하는 세 가지 방식으로 기여하고 싶습니다.</p>
+        <p><span class="cl-em">첫째, 반복 업무를 체크리스트와 표준 문서로 남깁니다.</span> 급여·4대보험·세무 신고 같은 정기 업무일수록 담당자 개인의 기억이 아닌 문서로 보관되어야 조직이 안정적입니다.</p>
+        <p><span class="cl-em">둘째, 부서 간 흩어진 정보의 전달 구조를 정리합니다.</span> 키플레이스에서 55개 매장의 협업 채널을 정비했던 것처럼, 본사·현장·외부 이해관계자 사이의 정보가 매끄럽게 흐르도록 만드는 일이 총무의 중요한 역할이라고 생각합니다.</p>
+        <p><span class="cl-em">셋째, AI를 활용해 반복 업무의 부담을 낮춥니다.</span> 문서 초안 작성, PPT 교안 제작, 회의록 정리처럼 반복되는 업무 흐름을 AI로 자동화하는 방법을 이미 실무 교육으로 진행해왔습니다. 이 감각을 총무 실무에도 자연스럽게 접목하겠습니다.</p>
+        <p>담당자 한 사람의 노력에 의존하지 않는 조직, <span class="cl-mark">기록과 프로세스가 사람의 자리를 든든하게 받쳐주는 백오피스</span>를 만드는 자리에서 오래 기여하고 싶습니다.</p>
+      </div>
+      <div class="cl-summary">
+        <span class="lbl">Keyword</span>
+        관찰 → 문서화 → AI 활용 → 구조화 <span class="arr">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="cl-closing">
+  <div class="cl-closing-inner">
+    <div class="cl-closing-tag">/// End of Cover Letter</div>
+    <h2>이야기를 <em>더 나눠보고 싶다면,</em><br>편하게 연락 주세요.</h2>
+    <p>이력서와 포트폴리오, 상세 프로젝트 자료는 이메일로 함께 보내드립니다.</p>
+    <div class="cl-closing-cta">
+      <a href="tel:01098919709" class="cl-btn cl-btn-primary">전화하기 · 010-9891-9709</a>
+      <a href="mailto:kimkr970909@naver.com" class="cl-btn cl-btn-secondary">이메일 보내기</a>
+      <a href="index.html" class="cl-btn cl-btn-secondary">포트폴리오로 돌아가기</a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

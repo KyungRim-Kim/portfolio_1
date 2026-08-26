@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>포트폴리오 수정 방향 진단표</title>
+<link rel="stylesheet" href="assets/styles/base.css">
+<link rel="stylesheet" href="assets/styles/warm-sand.css">
+<style>
+  body { background: var(--w-bg); color: var(--w-text); font-family: var(--w-font-kr); padding: 60px 0; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+  h1 { font-family: var(--w-font-kr); font-size: 2.4rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  h1 em { font-family: var(--w-font-serif); font-style: italic; color: var(--w-bronze-deep); font-weight: 500; }
+  .lead { color: var(--w-text-2); font-size: 1.05rem; line-height: 1.7; max-width: 760px; margin-bottom: 40px; }
+  .eyebrow { font-family: var(--w-font-mono); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--w-text-3); margin-bottom: 12px; }
+
+  .summary {
+    background: var(--w-panel);
+    border: 1px solid var(--w-border);
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin-bottom: 48px;
+    box-shadow: var(--w-sh-sm);
+  }
+  .summary h2 { font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.01em; }
+  .summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .summary-item { padding: 16px 18px; background: var(--w-bg); border: 1px dashed var(--w-border-strong); border-radius: 10px; }
+  .summary-item .num { font-family: var(--w-font-serif); font-style: italic; font-size: 2rem; font-weight: 600; color: var(--w-bronze-deep); line-height: 1; }
+  .summary-item .lbl { margin-top: 6px; font-size: 0.88rem; color: var(--w-text-2); }
+
+  h2.section { font-size: 1.4rem; font-weight: 700; margin: 48px 0 20px; letter-spacing: -0.015em; padding-left: 14px; border-left: 4px solid var(--w-bronze); }
+
+  table { width: 100%; border-collapse: collapse; margin-bottom: 20px; background: var(--w-panel); border-radius: 12px; overflow: hidden; box-shadow: var(--w-sh-sm); }
+  th, td { padding: 14px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--w-border); font-size: 0.94rem; line-height: 1.6; }
+  th { background: var(--w-panel-2); font-family: var(--w-font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--w-text-3); font-weight: 600; }
+  tr:last-child td { border-bottom: none; }
+  td.col-item { width: 190px; font-weight: 600; color: var(--w-text); }
+  td.col-current { width: 34%; color: var(--w-text-2); }
+  td.col-original { width: 34%; color: var(--w-text-2); background: color-mix(in oklab, var(--w-bronze-soft) 30%, transparent); }
+  td.col-verdict { font-weight: 500; }
+
+  .tag { display: inline-block; padding: 3px 10px; border-radius: 999px; font-family: var(--w-font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; }
+  .tag-fact { background: #fbe5e5; color: #a13030; }         /* 사실 오류 */
+  .tag-embellish { background: #f6e8cc; color: #8a5a1a; }     /* 과장/각색 */
+  .tag-ok { background: #e0ecdf; color: #2f6b3a; }            /* 유지 OK */
+  .tag-tone { background: #e5ecf5; color: #2d5090; }          /* 톤/문장 */
+  .tag-cut { background: #eee; color: #666; }                 /* 축소 권장 */
+
+  .note { background: var(--w-panel); border-left: 4px solid var(--w-bronze); padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 16px 0 32px; font-size: 0.95rem; line-height: 1.7; color: var(--w-text-2); }
+  .note strong { color: var(--w-bronze-deep); }
+
+  .action-box {
+    margin-top: 60px;
+    background: var(--w-text);
+    color: var(--w-bg);
+    border-radius: 14px;
+    padding: 36px 40px;
+  }
+  .action-box .eyebrow { color: color-mix(in oklab, var(--w-bg) 60%, transparent); }
+  .action-box h2 { font-size: 1.5rem; font-weight: 700; margin: 8px 0 16px; letter-spacing: -0.015em; color: var(--w-bg); }
+  .action-box ol { margin: 0; padding-left: 22px; }
+  .action-box li { margin-bottom: 10px; line-height: 1.7; color: color-mix(in oklab, var(--w-bg) 88%, transparent); }
+  .action-box li strong { color: var(--w-bg); }
+
+  .diff-mini { font-family: var(--w-font-mono); font-size: 0.82rem; }
+  .diff-mini del { color: #a13030; text-decoration: line-through; }
+  .diff-mini ins { color: #2f6b3a; text-decoration: none; background: #e0ecdf; padding: 0 4px; border-radius: 3px; }
+</style>
+</head>
+<body class="warm">
+
+<div class="wrap">
+  <div class="eyebrow">/// diagnostic report · 2026.08.25</div>
+  <h1>포트폴리오 수정 방향 <em>진단표</em></h1>
+  <p class="lead">
+    원본 이력서(<code style="font-family: var(--w-font-mono); color: var(--w-bronze-deep);">이력서_20260823.pdf</code>) 와 현재 포트폴리오(index.html · resume.html)를
+    정면 대조했습니다. 파일 수정 전 확인해 주세요 — 특히 <b>빨간색 태그(사실 오류)</b>와 <b>주황색 태그(과장·각색)</b> 항목은
+    실제와 다르거나 원본에 없던 표현이라 승인 여부가 필요합니다.
+  </p>
+
+  <div class="summary">
+    <h2>한눈에 요약</h2>
+    <div class="summary-grid">
+      <div class="summary-item"><div class="num">4</div><div class="lbl">사실 오류 (수치·기간 등)</div></div>
+      <div class="summary-item"><div class="num">8</div><div class="lbl">과장·각색된 표현</div></div>
+      <div class="summary-item"><div class="num">6</div><div class="lbl">축소·삭제 권장 부분</div></div>
+    </div>
+  </div>
+
+  <!-- ─────────── 1. 사실 관계 ─────────── -->
+  <h2 class="section">1 · 사실 관계 (수치·기간·이력)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>항목</th>
+        <th>현재 포트폴리오</th>
+        <th>원본 이력서</th>
+        <th>진단</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-item">심테크시스템 기간</td>
+        <td class="col-current">2024.09 — <b>현재</b> (재직 중, "current: true")</td>
+        <td class="col-original">2024.09 — <b>2026.04</b> · <b>퇴사</b> 상태</td>
+        <td class="col-verdict"><span class="tag tag-fact">사실 오류</span><br>이력서에는 <b>퇴사</b>로 표기됨. "현재 재직 중" 및 히어로의 "새로운 기회를 찾고 있습니다"는 유지하되, 심테크시스템 카드는 <b>퇴사(2026.04)</b>로 수정 필요.</td>
+      </tr>
+      <tr>
+        <td class="col-item">Featured 프로젝트 ③ 기간</td>
+        <td class="col-current">"2024.09 – 2026.04"로 표기 (재직 중 표기와 모순)</td>
+        <td class="col-original">2024.09 — 2026.04 (1년 8개월)</td>
+        <td class="col-verdict"><span class="tag tag-fact">사실 오류</span><br>포트폴리오 내에서 <b>같은 회사가 "재직중"과 "2024–2026" 두 표기가 공존</b>. 하나로 통일 필요.</td>
+      </tr>
+      <tr>
+        <td class="col-item">키플레이스 매뉴얼 개수</td>
+        <td class="col-current">"운영 매뉴얼 <b>15종+</b> 표준화" (여러 곳에서 반복)</td>
+        <td class="col-original">"점주 운영 매뉴얼 제작 및 정보 전달 프로세스 개선" — <b>수량 명시 없음</b></td>
+        <td class="col-verdict"><span class="tag tag-embellish">과장</span><br>원본에 없는 숫자. 실제 개수가 15종 이상이 맞는지 확인 필요. 아니라면 "다수의 점주용 운영 매뉴얼" 정도로 순화 권장.</td>
+      </tr>
+      <tr>
+        <td class="col-item">청소년 마인드맵 대회 "2개 지역"</td>
+        <td class="col-current">Featured 임팩트: "<b>2 지역 대회 무사고</b>"</td>
+        <td class="col-original">"청소년 마인드맵 경진대회 총괄 운영" — <b>지역 수 명시 없음</b></td>
+        <td class="col-verdict"><span class="tag tag-embellish">확인 필요</span><br>실제 몇 개 지역/회차인지 확인. 미확인 시 수치 삭제하고 정성 서술로 전환 권장.</td>
+      </tr>
+      <tr>
+        <td class="col-item">정기 교육 "13+ 차수"</td>
+        <td class="col-current">Featured ③ 임팩트: "<b>13+ 정기 교육 차수</b>"</td>
+        <td class="col-original">원본에 <b>차수 수치 없음</b></td>
+        <td class="col-verdict"><span class="tag tag-embellish">확인 필요</span><br>확실치 않으면 삭제. 대체안: "기업·공공기관·학교 대상 교육 운영".</td>
+      </tr>
+      <tr>
+        <td class="col-item">"2017 포드 서비스 엑설런스 전국 상위 5인 본선 진출·수상"</td>
+        <td class="col-current">resume.html 및 timeline에 명시 (연도·상위 5인·본선 진출 모두 구체)</td>
+        <td class="col-original">"포드/링컨 서비스 엑설런스 프로그램 수상 경험" — <b>연도·순위·본선 진출 표현 모두 없음</b></td>
+        <td class="col-verdict"><span class="tag tag-fact">사실 오류 가능성</span><br>이전 대화에서 EBN 보도(2017.12) 링크가 언급되긴 했지만, 원본 이력서에는 없는 표현. <b>실제로 "전국 상위 5인 본선 진출"이 맞는지</b> 반드시 확인 필요. 아니라면 "포드/링컨 서비스 엑설런스 프로그램 수상" 정도로 순화.</td>
+      </tr>
+      <tr>
+        <td class="col-item">희망연봉·희망근무지</td>
+        <td class="col-current">언급 없음</td>
+        <td class="col-original">희망연봉 3,900만원 이상, 희망근무지 경기 수원 / 서울 강남·서초·관악</td>
+        <td class="col-verdict"><span class="tag tag-ok">유지 (미노출)</span><br>포트폴리오에는 굳이 노출 안 하는 것이 자연스러움. 현재 상태 OK.</td>
+      </tr>
+      <tr>
+        <td class="col-item">경력 총 기간</td>
+        <td class="col-current">"9년 11개월"</td>
+        <td class="col-original">"총 9년 11개월"</td>
+        <td class="col-verdict"><span class="tag tag-ok">일치 OK</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">자격증 개수</td>
+        <td class="col-current">10개 표기</td>
+        <td class="col-original">10개 (마인드프로세서, CS강사, 항공서비스전문가1급, 2종보통, CS Leaders, 아바쿠스, SMAT3급, ERP정보관리사인사2급, 커피조리사2급, ITQ 아래한글)</td>
+        <td class="col-verdict"><span class="tag tag-ok">일치 OK</span><br>단, 원본에는 "커피조리사 2급 → 한국음료산업연구원", "아바쿠스 → 아시아나" 등 <b>발급기관</b>이 있음. 현재는 없음 (있어도/없어도 무방).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>⚠ 확인 부탁드립니다.</strong> 위 <b>사실 오류·과장</b> 4~5건 중 실제와 다른 부분이 있다면 알려주세요.
+    특히 <b>①심테크시스템 퇴사 여부</b>와 <b>②포드 수상의 "전국 상위 5인 본선 진출" 표현</b>이 실제와 맞는지가 가장 중요합니다.
+  </div>
+
+  <!-- ─────────── 2. 스토리라인 재편 ─────────── -->
+  <h2 class="section">2 · 스토리라인 재편 (채용담당자 관점)</h2>
+
+  <div class="note" style="border-left-color: var(--w-text);">
+    현재 포트폴리오의 스토리는 <b>"관찰과 기록의 사람 → 흩어진 절차를 문서로"</b>라는 다소 문학적인 프레임입니다.
+    채용담당자 관점에서 더 강력한 프레임은 <b>"9년 11개월 · 5개 조직 · 원 라인 백오피스를 단독 운영해본 실무자"</b>입니다.
+    즉 <b>"할 수 있는 일의 넓이 × 실제 단독 실행 경험"</b>을 앞세우는 편이 설득력이 큽니다.
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>영역</th>
+        <th>현재 (Before)</th>
+        <th>수정안 (After)</th>
+        <th>진단</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-item">Hero 헤드라인</td>
+        <td class="col-current">"흩어진 업무를 / 조직의 흐름으로 / 정리해왔습니다."</td>
+        <td class="col-original">"인사·회계·총무를 / <em>한 사람이 굴려본</em> / 9년 11개월."<br><span class="diff-mini">— 능동적, 담당 범위+독립성 앞세우기</span></td>
+        <td class="col-verdict"><span class="tag tag-tone">톤 강화</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Hero 서브 문구</td>
+        <td class="col-current">"저는 사람이 바뀌어도 조직이 흔들리지 않는 시스템을 만듭니다."</td>
+        <td class="col-original">"인사·급여·4대보험·세무 신고까지, 백오피스 전반을 정확하게 운영하는 담당자입니다."<br><span class="diff-mini">— 실제 할 수 있는 일을 먼저</span></td>
+        <td class="col-verdict"><span class="tag tag-tone">톤 강화</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Philosophy 섹션</td>
+        <td class="col-current">"흩어진 일이 문서가 되면 조직은 흔들리지 않습니다" (문학적 인용문 톤)</td>
+        <td class="col-original"><b>섹션 자체 통합/축소 권장</b>. About 첫 문단에 흡수하고, 별도 인용 섹션은 삭제.<br><span class="diff-mini">— 실무 지원 포지션은 "철학 인용"보다 "실행 경험"이 강함</span></td>
+        <td class="col-verdict"><span class="tag tag-cut">축소·통합</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">About 본문</td>
+        <td class="col-current">4문단, 총 8~9줄 (톤이 서정적)</td>
+        <td class="col-original">3문단으로 압축. 첫 문단: 총 경력·직무 범위 / 둘째: 대표 실적 2개 / 셋째: 어떤 자리에서 일하고 싶은지.</td>
+        <td class="col-verdict"><span class="tag tag-cut">분량 축소</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Strengths 3가지</td>
+        <td class="col-current">① 통합 운영 ② 문서화 ③ AI 활용</td>
+        <td class="col-original"><b>순서·비중 그대로 유지 OK</b>. 다만 각 카드 본문을 2~3문장으로 축소. "습관입니다" 같은 완곡 표현 → "운영합니다·표준화합니다·설계합니다"로.</td>
+        <td class="col-verdict"><span class="tag tag-tone">문장만 다듬기</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Career 타임라인 highlight</td>
+        <td class="col-current">각 회사 highlight가 서술적 ("서비스센터 리셉션에서 …")</td>
+        <td class="col-original">각 회사 <b>가장 굵은 실적 1개</b>만 첫 줄에 (원라인 → "1인 백오피스 · 인사·회계·세무 단독 신고" / 키플레이스 → "55개 매장 협업 시스템 도입")</td>
+        <td class="col-verdict"><span class="tag tag-tone">스캔성 강화</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Featured Projects 임팩트 숫자</td>
+        <td class="col-current">"13+ 정기 교육 차수 / 2 지역 대회 무사고" 등 미확인 수치 다수</td>
+        <td class="col-original">확인된 수치만 남기고 나머지는 <b>키워드</b>로 대체.<br>예: "1인 백오피스 / 4대보험 단독 신고 / 부가세·원천세 신고"</td>
+        <td class="col-verdict"><span class="tag tag-fact">수치 검증 후</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">자기소개서 4챕터</td>
+        <td class="col-current">원본에는 있지만 <b>포트폴리오에서 재구성된 각색본</b>이 실려 있음 (전국 상위 5인 등 원본에 없는 표현 포함)</td>
+        <td class="col-original">두 가지 옵션:<br>ⓐ 원본 자소서 4항목 그대로 살리고 소제목·문단 정리만<br>ⓑ 지금처럼 각색하되 원본에 없는 사실은 삭제</td>
+        <td class="col-verdict"><span class="tag tag-fact">방향 선택 필요</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ─────────── 3. 톤·문장 다듬기 ─────────── -->
+  <h2 class="section">3 · 톤·문장 다듬기 예시</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>위치</th>
+        <th>현재 문장</th>
+        <th>제안 (더 자신감·능동적)</th>
+        <th>진단</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-item">Hero lead</td>
+        <td class="col-current">"…쌓아온 문서와 프로세스를 <b>만들어왔습니다.</b>"</td>
+        <td class="col-original">"…인사·회계·총무 실무를 <b>단독으로 운영해온</b> 9년 11개월입니다."</td>
+        <td class="col-verdict"><span class="tag tag-tone">능동</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Strengths 01 본문</td>
+        <td class="col-current">"…반복 업무는 체크리스트와 문서로 <b>표준화해두는 게 습관입니다.</b>"</td>
+        <td class="col-original">"…반복 업무를 체크리스트·표준 문서로 정리해 <b>담당자가 바뀌어도 굴러가는 상태</b>로 남깁니다."</td>
+        <td class="col-verdict"><span class="tag tag-tone">능동</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Philosophy 인용</td>
+        <td class="col-current">"흩어진 일이 문서가 되면, 조직은 사람이 바뀌어도 흔들리지 않습니다."</td>
+        <td class="col-original"><b>삭제 후 About 첫 문단으로 흡수</b> — "9년 11개월, 인사·회계·총무를 원 라인으로 운영한 실무자입니다."</td>
+        <td class="col-verdict"><span class="tag tag-cut">삭제</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">자소서 CH2 (장단점) 도입</td>
+        <td class="col-current">"'꼼꼼함'을 개인 성향으로 두지 않고, 조직 자산으로 남기려 노력합니다."</td>
+        <td class="col-original">"꼼꼼함은 저의 성향이지만, 조직에 남는 문서와 체크리스트로 <b>이어질 때만 자산이 됩니다.</b>"</td>
+        <td class="col-verdict"><span class="tag tag-tone">문장 강화</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">자소서 CH4 마무리</td>
+        <td class="col-current">"…기록과 프로세스가 사람의 자리를 든든하게 받쳐주는 백오피스를 <b>만드는 자리에서 오래 기여하고 싶습니다.</b>"</td>
+        <td class="col-original">"…<b>'이 업무는 맡겨도 되겠다'는 신뢰를 받는 담당자</b>로 오래 기여하겠습니다." <span class="diff-mini">— 원본 자소서 결어 그대로 살림</span></td>
+        <td class="col-verdict"><span class="tag tag-tone">원본 회귀</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ─────────── 4. 축소·삭제 권장 ─────────── -->
+  <h2 class="section">4 · 축소·삭제 권장</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>위치</th>
+        <th>이유</th>
+        <th>제안</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-item">Philosophy 섹션 (별도)</td>
+        <td>철학 인용은 백오피스 지원에서 약한 카드. About으로 흡수하면 스크롤 1개 줄고 리듬 개선.</td>
+        <td class="col-verdict"><span class="tag tag-cut">삭제 · About 흡수</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Portrait 하단 통계 3개 ("9y 11m / 5 / 55+")</td>
+        <td>현재 Hero와 About에서 총 3번 반복됨.</td>
+        <td class="col-verdict"><span class="tag tag-cut">1회로 축소</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Strengths 카드 본문</td>
+        <td>각 카드 3~4문장 → 스캔이 어려움.</td>
+        <td class="col-verdict"><span class="tag tag-cut">2문장으로</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Career 각 회사 tasks 개수</td>
+        <td>심테크시스템 6개, 원라인 4개, 키플레이스 6개 — 스캔 부담.</td>
+        <td class="col-verdict"><span class="tag tag-cut">각 회사 3~4개로</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Other Selected Work 3건</td>
+        <td>Featured 3건과 내용이 겹침 (CS Workflow / AI 교육 / 마인드맵 대회는 이미 Featured나 Timeline에 포함).</td>
+        <td class="col-verdict"><span class="tag tag-cut">섹션 삭제 검토</span></td>
+      </tr>
+      <tr>
+        <td class="col-item">Aspiration 섹션</td>
+        <td>내용이 Philosophy·Contact와 3번 반복됨.</td>
+        <td class="col-verdict"><span class="tag tag-cut">Contact와 병합</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ─────────── 5. 이후 진행 ─────────── -->
+  <div class="action-box">
+    <div class="eyebrow">/// next.step</div>
+    <h2>이렇게 진행하겠습니다 — 확인 부탁드립니다</h2>
+    <ol>
+      <li><strong>먼저 확인 부탁드리는 5가지</strong><br>
+        ① 심테크시스템 <b>2026.04 퇴사</b>가 맞나요? (현재 "재직 중"으로 표기 중)<br>
+        ② 포드 서비스 엑설런스 "<b>전국 상위 5인 본선 진출</b>" 표현이 실제 사실인가요? (원본 이력서에는 "수상 경험"까지만 있음)<br>
+        ③ 키플레이스 매뉴얼 "<b>15종+</b>", 정기 교육 "<b>13+ 차수</b>", 마인드맵 대회 "<b>2개 지역</b>" — 각각 실제 수치와 일치하나요?<br>
+        ④ 자기소개서: <b>원본 자소서 4항목 그대로</b>로 되돌릴까요? / 아니면 지금처럼 각색하되 원본에 없는 사실만 걸러낼까요?<br>
+        ⑤ Philosophy · Other Selected Work · Aspiration 3개 섹션 <b>삭제·통합</b> 진행해도 될까요?
+      </li>
+      <li><strong>실제 수정 작업 (승인 후)</strong><br>
+        · <code style="font-family: var(--w-font-mono); color: var(--w-bg); background: color-mix(in oklab, var(--w-bg) 15%, transparent); padding: 2px 6px; border-radius: 4px;">data/portfolio.js</code> 전면 재작성 (Warm Sand 스타일 그대로, 내용만)<br>
+        · <code style="font-family: var(--w-font-mono); color: var(--w-bg); background: color-mix(in oklab, var(--w-bg) 15%, transparent); padding: 2px 6px; border-radius: 4px;">resume.html</code> 자소서 본문 교체<br>
+        · <code style="font-family: var(--w-font-mono); color: var(--w-bg); background: color-mix(in oklab, var(--w-bg) 15%, transparent); padding: 2px 6px; border-radius: 4px;">index.html</code>은 섹션 삭제만 필요 시 편집
+      </li>
+      <li><strong>확인 후 결과물</strong>은 오늘 안에 초안으로 보내드리고, 브라우저에서 검토하실 수 있게 열어드리겠습니다.</li>
+    </ol>
+  </div>
+
+</div>
+
+</body>
+</html>
