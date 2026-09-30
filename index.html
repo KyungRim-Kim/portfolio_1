@@ -115,15 +115,15 @@
         <div class="portrait-stats">
           <div class="stat">
             <div class="stat-num" id="stat-exp"></div>
-            <div class="stat-lbl">경력</div>
+            <div class="stat-lbl">총 경력</div>
           </div>
           <div class="stat">
             <div class="stat-num" id="stat-roles"></div>
-            <div class="stat-lbl">역할</div>
+            <div class="stat-lbl">근무처</div>
           </div>
           <div class="stat">
             <div class="stat-num" id="stat-projects"></div>
-            <div class="stat-lbl">프로젝트</div>
+            <div class="stat-lbl">수행 프로젝트</div>
           </div>
         </div>
       </div>
@@ -164,7 +164,7 @@
   <div class="container-wide">
     <div class="section-header reveal">
       <div class="eyebrow">03 · skills.map</div>
-      <h2 class="display-2"><span class="kr">실제로 할 수 있는 일</span></h2>
+      <h2 class="display-2"><span class="kr">맡겨주시면 되는 일</span></h2>
       <p class="body" style="max-width:640px;margin-top:16px;">도구 이름이 아닌, 무엇을 어떻게 해왔는지 순서로 보여드립니다.</p>
     </div>
     <div class="skills-editorial" id="skills-grid"></div>
@@ -429,7 +429,7 @@
   // ── Hero stats
   const expMatch = D.profile.yearsExperience.match(/(\d+)\D+(\d+)/);
   document.getElementById('stat-exp').innerHTML = expMatch
-    ? `${expMatch[1]}.${expMatch[2]}<span class="stat-unit">yr</span>`
+    ? `<span style="white-space:nowrap">${expMatch[1]}<span class="stat-unit">년</span> ${expMatch[2]}<span class="stat-unit">개월</span></span>`
     : D.profile.yearsExperience;
   document.getElementById('stat-roles').textContent = D.timeline.length;
   document.getElementById('stat-projects').textContent = D.projects.length;

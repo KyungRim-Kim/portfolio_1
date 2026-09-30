@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>김경림 이력서</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --brown: #8b5a2b;
+    --brown-deep: #6b4020;
+    --brown-soft: #f4ede3;
+    --text: #1a1613;
+    --text-2: #4a4238;
+    --text-3: #857a6d;
+    --border: #e5ddd0;
+    --border-strong: #c9bfae;
+    --bg: #fdfbf7;
+    --panel: #f8f4ec;
+  }
+
+  html, body {
+    font-family: 'Noto Sans KR', sans-serif;
+    color: var(--text);
+    background: #ddd;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* A4 페이지 */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 14mm 15mm;
+    margin: 20px auto;
+    background: var(--bg);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ── HEADER ── */
+  .header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid var(--brown);
+    margin-bottom: 20px;
+  }
+  .header-left { display: flex; flex-direction: column; justify-content: center; }
+  .header .title-lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9pt;
+    color: var(--brown);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .header h1 {
+    font-size: 30pt;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--text);
+  }
+  .header h1 .en {
+    font-size: 11pt;
+    font-weight: 400;
+    color: var(--text-3);
+    margin-left: 12px;
+    letter-spacing: 0.05em;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .header .subtitle {
+    margin-top: 10px;
+    font-size: 10.5pt;
+    color: var(--text-2);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .header-right {
+    text-align: right;
+    font-size: 9pt;
+    color: var(--text-2);
+    line-height: 1.85;
+  }
+  .header-right .row { display: flex; justify-content: flex-end; gap: 8px; }
+  .header-right .k {
+    color: var(--text-3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    letter-spacing: 0.1em;
+    min-width: 40px;
+    text-align: right;
+  }
+  .header-right .v { color: var(--text); font-weight: 500; }
+
+  /* ── SECTION ── */
+  section { margin-bottom: 18px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .sec-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: var(--brown);
+    letter-spacing: 0.15em;
+    font-weight: 600;
+  }
+  .sec-title {
+    font-size: 13pt;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.015em;
+  }
+  .sec-title-en {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    margin-left: auto;
+  }
+
+  /* ── SUMMARY ── */
+  .summary {
+    background: var(--brown-soft);
+    padding: 14px 18px;
+    border-radius: 6px;
+    border-left: 3px solid var(--brown);
+  }
+  .summary-tagline {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--brown-deep);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+  }
+  .summary-body {
+    font-size: 9pt;
+    line-height: 1.75;
+    color: var(--text-2);
+    letter-spacing: -0.005em;
+    word-break: keep-all;
+  }
+
+  /* ── STATS ── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+  }
+  .stat {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 10px 12px;
+    border-radius: 4px;
+  }
+  .stat-num {
+    font-size: 15pt;
+    font-weight: 700;
+    color: var(--brown-deep);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-num .u { font-size: 9pt; font-weight: 500; color: var(--text-3); margin-left: 2px; }
+  .stat-lbl {
+    font-size: 7.5pt;
+    color: var(--text-3);
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CAREER TIMELINE ── */
+  .career-item {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .career-item:last-child { border-bottom: none; }
+  .ci-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8pt;
+    color: var(--text-2);
+    line-height: 1.5;
+  }
+  .ci-period .dur {
+    display: block;
+    font-size: 7.5pt;
+    color: var(--brown);
+    margin-top: 3px;
+    font-weight: 600;
+  }
+  .ci-company {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+  }
+  .ci-company .core {
+    display: inline-block;
+    background: var(--brown);
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 6.5pt;
+    padding: 1px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+    margin-left: 6px;
+    vertical-align: middle;
+    font-weight: 600;
+  }
+  .ci-role {
+    font-size: 8.5pt;
+    color: var(--text-2);
+    margin-bottom: 4px;
+  }
+  .ci-highlight {
+    background: var(--brown-soft);
+    color: var(--brown-deep);
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 8pt;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 6px;
+  }
+  .ci-desc {
+    font-size: 8.5pt;
+    color: var(--text-2);
+    line-height: 1.6;
+    letter-spacing: -0.005em;
+    word-break: keep-all;
+  }
+  .ci-tags {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .ci-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    padding: 2px 6px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text-3);
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .skill-item {
+    padding: 10px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    border-left: 3px solid var(--brown);
+  }
+  .skill-cap {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+    letter-spacing: -0.01em;
+  }
+  .skill-act {
+    font-size: 8pt;
+    color: var(--brown-deep);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  .skill-tools {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .skill-tools li {
+    font-size: 7.5pt;
+    color: var(--text-2);
+    background: white;
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--border);
+  }
+
+  /* ── CERT / EDU ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 20px;
+  }
+  .cert-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 14px;
+  }
+  .cert-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 3px 0;
+    border-bottom: 1px dotted var(--border);
+    font-size: 8.5pt;
+  }
+  .cert-name { color: var(--text); font-weight: 500; }
+  .cert-grade {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: var(--brown);
+    font-weight: 600;
+  }
+  .cert-org {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: var(--text-3);
+    display: block;
+    margin-top: 1px;
+  }
+  .cert-block { display: flex; flex-direction: column; padding: 4px 0; border-bottom: 1px dotted var(--border);}
+  .cert-block .row1 { display: flex; justify-content: space-between; align-items: baseline; }
+
+  .edu-item {
+    padding: 6px 0;
+    border-bottom: 1px dotted var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-school {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .edu-degree {
+    font-size: 8pt;
+    color: var(--text-2);
+    margin-top: 2px;
+  }
+  .edu-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: var(--text-3);
+    margin-top: 2px;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    position: absolute;
+    bottom: 8mm;
+    left: 15mm;
+    right: 15mm;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7pt;
+    color: var(--text-3);
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* ── PROJECT HIGHLIGHT ── */
+  .project-list {
+    display: grid;
+    gap: 10px;
+  }
+  .project-item {
+    padding: 10px 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .proj-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
+  }
+  .proj-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+  .proj-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 7.5pt;
+    color: var(--text-3);
+  }
+  .proj-tagline {
+    font-size: 8.5pt;
+    color: var(--brown-deep);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .proj-result {
+    font-size: 8pt;
+    color: var(--text-2);
+    line-height: 1.55;
+    word-break: keep-all;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    html, body { background: white; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .print-guide { display: none !important; }
+  }
+
+  /* PRINT GUIDE */
+  .print-guide {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--brown);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-width: 260px;
+    line-height: 1.55;
+  }
+  .print-guide button {
+    background: white;
+    color: var(--brown);
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 12px;
+    width: 100%;
+  }
+  .print-guide button:hover { background: var(--brown-soft); }
+  .print-guide .close {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    background: transparent;
+    color: white;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    font-size: 16px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="print-guide" id="print-guide">
+  <button class="close" onclick="document.getElementById('print-guide').style.display='none'">×</button>
+  <strong>📄 PDF 저장 방법</strong><br>
+  Ctrl/Cmd + P → 대상: PDF로 저장<br>
+  여백: 없음, 배경 그래픽 체크
+  <button onclick="window.print()">🖨️ PDF로 저장</button>
+</div>
+
+<!-- ═══════════ PAGE 1 ═══════════ -->
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div class="title-lbl">// Résumé · 2026</div>
+      <h1>김경림<span class="en">KIM · KYUNGRIM</span></h1>
+      <div class="subtitle">정확한 실무와 문서화로 조직의 운영을 받쳐온<br>경영지원 · 총무 · 회계 실무 담당자</div>
+    </div>
+    <div class="header-right">
+      <div class="row"><span class="k">BIRTH</span><span class="v">1997년생 · 여</span></div>
+      <div class="row"><span class="k">TEL</span><span class="v">010-9891-9709</span></div>
+      <div class="row"><span class="k">EMAIL</span><span class="v">kimkr970909@naver.com</span></div>
+      <div class="row"><span class="k">ADDR</span><span class="v">경기 수원시 장안구</span></div>
+      <div class="row"><span class="k">WEB</span><span class="v">kyungrim-kim.github.io/portfolio_1</span></div>
+    </div>
+  </header>
+
+  <!-- SUMMARY -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">Summary</span>
+      <span class="sec-title-en">경력 요약</span>
+    </div>
+    <div class="summary">
+      <div class="summary-tagline">사람이 바뀌어도 조직이 흔들리지 않는 시스템을 만듭니다.</div>
+      <div class="summary-body">
+        서비스센터 고객 응대에서 사회생활을 시작해 매장 운영 지원, 인사행정·회계 지원, 교육 운영까지 다양한 업무를 경험하며 조직의 업무 흐름을 파악하는 역량을 키워왔습니다. 경영지원은 구성원이 본연의 업무에 집중할 수 있도록 인사·행정·문서·운영 업무를 정확하게 지원하는 역할이라고 생각하며, 정확한 실행에 문서화·프로세스 표준화의 관점을 더해왔습니다.
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-num">9.11<span class="u">yr</span></div>
+        <div class="stat-lbl">TOTAL EXP</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5<span class="u">회사</span></div>
+        <div class="stat-lbl">CAREER</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7<span class="u">건</span></div>
+        <div class="stat-lbl">PROJECTS</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">55<span class="u">매장</span></div>
+        <div class="stat-lbl">OPS SCALE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Career</span>
+      <span class="sec-title-en">2015 – 2026 · 경력사항</span>
+    </div>
+
+    <div class="career-item">
+      <div class="ci-period">
+        2024.09 – 2026.04
+        <span class="dur">1년 8개월</span>
+      </div>
+      <div>
+        <div class="ci-company">㈜심테크시스템 (SimTech System)<span class="core">CORE</span></div>
+        <div class="ci-role">영업지원 · 주임/계장 · 팀원</div>
+        <div class="ci-highlight">ThinkWise SaaS 운영 · 사용자 교육 · AI/SW 교육 운영</div>
+        <div class="ci-desc">ThinkWise 협업 소프트웨어 SaaS 운영과 사용자 교육을 담당. 사용자 문의 응대, 입문/실무 교육 진행, 기업·공공기관·학교 대상 AI/SW 교육 운영, 매뉴얼 및 교육자료 기획·제작, 법무연수원 교육 운영과 청소년 마인드맵 경진대회 총괄 운영.</div>
+        <div class="ci-tags">
+          <span class="ci-tag">SaaS 운영</span>
+          <span class="ci-tag">사용자 교육</span>
+          <span class="ci-tag">매뉴얼 기획</span>
+          <span class="ci-tag">AI/SW 교육</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="ci-period">
+        2023.08 – 2024.07
+        <span class="dur">1년</span>
+      </div>
+      <div>
+        <div class="ci-company">원라인 (Oneline)</div>
+        <div class="ci-role">경영지원 · 주임/계장 · 파트장</div>
+        <div class="ci-highlight">인사행정 · 회계지원 · 지원사업 실무 전반</div>
+        <div class="ci-desc">경영지원 담당으로 급여, 채용, 입·퇴사자 관리 및 4대보험 업무 수행. 부가세·원천세 신고, 자금일보 및 기초 회계 업무 지원. 거래처 원장·매입·매출·손익 자료 정리, 용인시 지원사업 및 행정 실무 운영 담당.</div>
+        <div class="ci-tags">
+          <span class="ci-tag">인사행정</span>
+          <span class="ci-tag">급여·4대보험</span>
+          <span class="ci-tag">부가세·원천세</span>
+          <span class="ci-tag">기초 회계</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="ci-period">
+        2021.05 – 2023.06
+        <span class="dur">2년 2개월</span>
+      </div>
+      <div>
+        <div class="ci-company">㈜키플레이스 (Keyplace)<span class="core">CORE</span></div>
+        <div class="ci-role">경영관리팀 · 주임/계장 · 팀원</div>
+        <div class="ci-highlight">55개 매장 운영 지원 · 카카오워크 협업 시스템 도입</div>
+        <div class="ci-desc">55개 매장 운영 지원 및 협업 프로세스 정리. 카카오워크 협업 시스템 도입 및 운영 체계 정리, 점주 운영 매뉴얼 제작 및 정보 전달 프로세스 개선. 매장 운영·손익 관리 지원, 직영점 시범 운영 및 개선안 도출, 운영 문서 표준화와 현장 전달 체계 정리.</div>
+        <div class="ci-tags">
+          <span class="ci-tag">매장 운영 지원</span>
+          <span class="ci-tag">협업 시스템</span>
+          <span class="ci-tag">매뉴얼 표준화</span>
+          <span class="ci-tag">손익 관리</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="ci-period">
+        2019.07 – 2021.04
+        <span class="dur">1년 10개월</span>
+      </div>
+      <div>
+        <div class="ci-company">교학모터스 동대문 서비스센터</div>
+        <div class="ci-role">주임/계장 · 팀원</div>
+        <div class="ci-desc">서비스센터 운영 지원. 고객 응대 및 예약 스케줄 운영, 접수·안내 프로세스 지원, 현장 응대 품질 유지 및 업무 흐름 관리.</div>
+        <div class="ci-tags">
+          <span class="ci-tag">고객 응대</span>
+          <span class="ci-tag">예약 스케줄</span>
+          <span class="ci-tag">운영 지원</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="career-item">
+      <div class="ci-period">
+        2015.12 – 2019.02
+        <span class="dur">3년 3개월</span>
+      </div>
+      <div>
+        <div class="ci-company">선인자동차 · 포드/링컨 신사·양재 서비스센터<span class="core">CORE</span></div>
+        <div class="ci-role">사원 · 팀원</div>
+        <div class="ci-highlight">2017 Ford 서비스 엑설런스 프로세스 경진대회 · 전국 상위 5인 본선 진출</div>
+        <div class="ci-desc">고객 응대 및 예약 관리 업무 담당. 서비스센터 고객 응대 및 예약 workflow 운영, CS 매뉴얼 제작과 신입사원 교육 지원. 고객 입장에서 이해 가능한 설명 방식과 서비스 흐름 개선을 경험. 이 시기의 관찰이 이후 교육·콘텐츠 방향성의 출발점.</div>
+        <div class="ci-tags">
+          <span class="ci-tag">고객 응대</span>
+          <span class="ci-tag">예약 workflow</span>
+          <span class="ci-tag">CS 매뉴얼</span>
+          <span class="ci-tag">신입 교육</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="doc-footer">
+    <span>KIM KYUNGRIM · RÉSUMÉ 2026</span>
+    <span>1 / 2</span>
+  </div>
+</div>
+
+<!-- ═══════════ PAGE 2 ═══════════ -->
+<div class="page">
+
+  <!-- SKILLS -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">03</span>
+      <span class="sec-title">Skills</span>
+      <span class="sec-title-en">핵심 역량</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-item">
+        <div class="skill-cap">인사행정 · 4대보험</div>
+        <div class="skill-act">→ 급여·채용·입퇴사를 직접 담당</div>
+        <ul class="skill-tools">
+          <li>급여·인사 대장</li>
+          <li>채용·입퇴사</li>
+          <li>4대보험</li>
+          <li>ERP정보관리사 2급</li>
+        </ul>
+      </div>
+      <div class="skill-item">
+        <div class="skill-cap">세무 · 기초회계</div>
+        <div class="skill-act">→ 부가세·원천세 신고와 자금일보 경험</div>
+        <ul class="skill-tools">
+          <li>부가세·원천세</li>
+          <li>자금일보</li>
+          <li>매입·매출</li>
+          <li>손익 자료</li>
+        </ul>
+      </div>
+      <div class="skill-item">
+        <div class="skill-cap">매뉴얼 · 프로세스 표준화</div>
+        <div class="skill-act">→ 개인의 지식을 조직의 자산으로</div>
+        <ul class="skill-tools">
+          <li>카카오워크 협업</li>
+          <li>점주 매뉴얼</li>
+          <li>운영 문서화</li>
+          <li>workflow 개선</li>
+        </ul>
+      </div>
+      <div class="skill-item">
+        <div class="skill-cap">SaaS 운영 · 사용자 교육</div>
+        <div class="skill-act">→ 쓰는 사람 입장에서 운영·교육</div>
+        <ul class="skill-tools">
+          <li>ThinkWise 운영</li>
+          <li>사용자 문의</li>
+          <li>기업·공공·학교 교육</li>
+          <li>교육자료 기획</li>
+        </ul>
+      </div>
+      <div class="skill-item">
+        <div class="skill-cap">AI · OA · 지원사업</div>
+        <div class="skill-act">→ 도구를 쉽게 바꿔 결과물로 연결</div>
+        <ul class="skill-tools">
+          <li>Excel · Notion</li>
+          <li>ChatGPT · Gemini</li>
+          <li>카드뉴스·PPT 자동화</li>
+          <li>용인시 지원사업</li>
+        </ul>
+      </div>
+      <div class="skill-item">
+        <div class="skill-cap">고객 응대 · CS</div>
+        <div class="skill-act">→ 서비스센터 5년 실무 기반</div>
+        <ul class="skill-tools">
+          <li>포드·링컨 3년+</li>
+          <li>교학모터스 1.10년</li>
+          <li>CS 강사</li>
+          <li>2017 Ford 본선</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY PROJECTS -->
+  <section>
+    <div class="sec-head">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Selected Projects</span>
+      <span class="sec-title-en">주요 프로젝트</span>
+    </div>
+    <div class="project-list">
+      <div class="project-item">
+        <div class="proj-head">
+          <span class="proj-title">ThinkWise SaaS 운영 & 사용자 교육</span>
+          <span class="proj-sub">심테크시스템 · 2024.09 – 2026.04</span>
+        </div>
+        <div class="proj-tagline">기능이 아닌 '활용 흐름'을 가르치는 SaaS 교육 설계</div>
+        <div class="proj-result">기능 나열식 매뉴얼 대신 '맵→가지→AI→협업→전달' 흐름 중심 교육 재설계. 법무연수원·청소년 마인드맵 경진대회 총괄, 13차수 이상 정기 입문교육 진행. 자기소개서 마인드맵 커리큘럼을 독자 설계해 AI 자기소개서 프로그램으로 확장.</div>
+      </div>
+
+      <div class="project-item">
+        <div class="proj-head">
+          <span class="proj-title">키플레이스 55개 매장 협업 시스템 구축</span>
+          <span class="proj-sub">키플레이스 경영지원부 · 2022.08 – 2023.08</span>
+        </div>
+        <div class="proj-tagline">개인 노하우를 55개 매장이 공유하는 조직 자산으로</div>
+        <div class="proj-result">카카오워크 협업 시스템 도입, 네이버 스마트플레이스·예약창·페이 포인트 등 15종 이상 표준 매뉴얼 제작. 오픈 매장 온보딩 프로세스 표준화, R&D 직영점 시범 운영 후 전체 확산.</div>
+      </div>
+
+      <div class="project-item">
+        <div class="proj-head">
+          <span class="proj-title">AI EduMentor · 청바지(NowYouth) 정부과제</span>
+          <span class="proj-sub">정부과제 공모전 · 2026</span>
+        </div>
+        <div class="proj-tagline">교육·복지 문제를 데이터 기반 서비스로 구조화한 두 프로젝트</div>
+        <div class="proj-result">AI EduMentor: KDT 학습자 이탈을 감지·개입하는 4단계 에이전트 사이클 설계, 시뮬레이터 MVP 완성. 청바지: 시니어 복지·활동·관계 통합 앱, 「모두의 창업」공모전 최종 제출, 웹 데모 배포.</div>
+      </div>
+
+      <div class="project-item">
+        <div class="proj-head">
+          <span class="proj-title">보험 실무자 AI 활용 교육</span>
+          <span class="proj-sub">프리랜서 강의 · 2026.05</span>
+        </div>
+        <div class="proj-tagline">'AI가 신기하다'를 '고객에게 바로 쓴다'로 바꾸는 2시간 교육</div>
+        <div class="proj-result">2시간 강의 교안(PPT 14장) 및 실습 자료 완성. 카드뉴스 실습 완성(32세 기혼 출산 지원금 시나리오), 할루시네이션 방지 5원칙 표준화, AI 강사 프로필 이미지·직원 마인드 교육 PPT 자동 생성 프롬프트 세트 개발.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERT / EDU -->
+  <section>
+    <div class="two-col">
+      <div>
+        <div class="sec-head">
+          <span class="sec-num">05</span>
+          <span class="sec-title">Certifications</span>
+        </div>
+        <div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">마인드프로세서</span><span class="cert-grade">2급</span></div>
+            <span class="cert-org">㈜심테크시스템 · 2025.04</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">CS 강사</span><span class="cert-grade">-</span></div>
+            <span class="cert-org">한국자격검정평가진흥원 · 2023.12</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">항공서비스전문가</span><span class="cert-grade">1급</span></div>
+            <span class="cert-org">한국자격검정평가진흥원 · 2023.12</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">CS Leaders 관리사</span><span class="cert-grade">-</span></div>
+            <span class="cert-org">(사)한국정보평가협회 · 2015.09</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">SMAT 서비스경영자격</span><span class="cert-grade">3급</span></div>
+            <span class="cert-org">한국생산성본부 · 2015.07</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">ERP정보관리사 인사</span><span class="cert-grade">2급</span></div>
+            <span class="cert-org">한국생산성본부 · 2015.01</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">ABACUS 항공권 예약</span><span class="cert-grade">-</span></div>
+            <span class="cert-org">아시아나 · 2015.09</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">2종 보통 운전면허</span><span class="cert-grade">-</span></div>
+            <span class="cert-org">경찰청 · 2018.01</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">커피조리사</span><span class="cert-grade">2급</span></div>
+            <span class="cert-org">한국음료산업연구원 · 2014.05</span>
+          </div>
+          <div class="cert-block">
+            <div class="row1"><span class="cert-name">ITQ 아래한글</span><span class="cert-grade">-</span></div>
+            <span class="cert-org">한국생산성본부 · 2013.05</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="sec-head">
+          <span class="sec-num">06</span>
+          <span class="sec-title">Education</span>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">경희사이버대학교</div>
+          <div class="edu-degree">관광레저항공경영학과 · 학사 (졸업)</div>
+          <div class="edu-meta">2016.09 – 2020.02 · GPA 3.6 / 4.3</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">경일관광경영고등학교</div>
+          <div class="edu-degree">졸업</div>
+          <div class="edu-meta">~ 2016</div>
+        </div>
+
+        <div class="sec-head" style="margin-top: 20px;">
+          <span class="sec-num">07</span>
+          <span class="sec-title">Overseas</span>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">캐나다 어학연수 <span style="font-family:'JetBrains Mono',monospace;font-size:8pt;color:var(--brown);font-weight:600;">6개월</span></div>
+          <div class="edu-degree">다른 나라의 문화를 배우고 한층 더 성장하고 싶어 6개월 동안 어학연수를 다녀왔습니다.</div>
+          <div class="edu-meta">2019.02 – 2019.07</div>
+        </div>
+
+        <div class="sec-head" style="margin-top: 20px;">
+          <span class="sec-num">08</span>
+          <span class="sec-title">Award & Press</span>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">2017 Ford 서비스 엑설런스 프로세스 경진대회</div>
+          <div class="edu-degree">리셉션 부문 · 전국 상위 5인 본선 진출</div>
+          <div class="edu-meta">EBN 보도 · 2017.12</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="doc-footer">
+    <span>KIM KYUNGRIM · RÉSUMÉ 2026</span>
+    <span>2 / 2</span>
+  </div>
+</div>
+
+</body>
+</html>
